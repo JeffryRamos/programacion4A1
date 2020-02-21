@@ -4,7 +4,7 @@ body{
 }
 input, textarea{
     height: 24px;
-    border: solid 1px rgb(158, 200, 255);
+    border: solid 1px rgb(70, 126, 6);
     border-radius: 5px;
 }
 textarea{
@@ -23,8 +23,8 @@ textarea{
 }
 input[type=submit], 
 input[type=button]{
-    background-color: rgb(74, 137, 255);
-    color: #FFF;
+    background-color: rgb(10, 95, 251);
+    color: rgb(33, 167, 16);
     text-transform: uppercase;
     height: 30px;
     width: auto;
@@ -32,8 +32,8 @@ input[type=button]{
 }
 input[type=submit]:hover, 
 input[type=button]:hover{
-    background-color: #FFF;
-    color: blue;
+    background-color: rgb(197, 24, 105);
+    color: rgb(29, 25, 207);
 }
 input[type=text]:valid, 
 textarea:valid,
@@ -43,5 +43,5 @@ input[type=date]:valid{
 input[type=text]:invalid, 
 textarea:invalid,
 input[type=date]:invalid{
-    background-color: rgb(255, 172, 172);
+    background-color: rgb(147, 185, 42);
 }

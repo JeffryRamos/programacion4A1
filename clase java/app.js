@@ -1,36 +1,83 @@
-document.addEventListener("DOMContentLoaded",( event) =>{
-    const formAlumnos = document.querySelector("#frmAlumno");
-    formAlumnos.addEventListener("submit", (e)=>{
-        e.preventDefault();
-
-        const $ = document.querySelector;
-        let codigo = $("#txtCodigoAlumno").value;
-        nombre = document.querySelector("#txtCodigoAlumno").value,
-        Direccion = document.querySelector("#txtDireccionAlumno").value,
-        Telefono = document.querySelector("#txtTelefonoAlumno").value;
-        
-        if('localStorage' in window){
-            window.localStorage.setItem("codigo", codigo);
-            window.localStorage.setItem("nombre", nombre);
-            window.localStorage.setItem("direccion", Direccion);
-            window.localStorage.setItem("telefono", Telefono);
-        }else{
-            alert("almacenamiento local no soportado!!! ")
-        }
+document.addEventListener("DOMContentLoaded", e=>{
+    const form = document.querySelector("#frmConversores");
+    form.addEventListener("submit", event=>{
+        event.preventDefault();
+  
+        let de = document.querySelector("#cboDe").value,
+            a = document.querySelector("#cboA").value,
+            cantidad = document.querySelector("#txtCantidadConversor").value,
+            opcion = document.getElementById('cboConvertir');
+  
+        let monedas = {
+            "dolar":1,
+            "euro":0.93,
+            "quetzal":7.63,
+            "lempira":24.9,
+            "cordoba":34.19},
+            longitudes = {
+              "mm": 1000,
+              "cm": 100,
+              "mt": 1,
+              "km": 0.001,
+              "milla": 0.000621371},
+              almacenamiento = {
+                "bit": 8,
+                "byte": 1,
+                "kb": 0.001,
+                "mb": 0.000001,
+                "gb":0.000000001},
+                peso = {
+                  "gramo": 1000,
+                  "kg": 1,
+                  "libra": 2.20462,
+                  "onza": 35.274,
+                  "tonelada": 0.01};
+  
+        let $res = document.querySelector("#lblRespuesta");
+        if(opcion.value == "moneda"){
+          $res.innerHTML = `Respuesta: ${ (monedas[a]/monedas[de]*cantidad).toFixed(2) }`;
+        } else if(opcion.value == "longitud"){
+          $res.innerHTML = `Respuesta: ${ (longitudes[a]/longitudes[de]*cantidad).toFixed(2) }`;
+        } else if(opcion.value == "almacenamiento"){
+          $res.innerHTML = `Respuesta: ${ (almacenamiento[a]/almacenamiento[de]*cantidad) }`;
+        } else if(opcion.value == "peso"){
+          $res.innerHTML = `Respuesta: ${ (peso[a]/peso[de]*cantidad).toFixed(2) }`;
+        };
     });
-    document.querySelector("#btnRecuperarAlumno").addEventListener("click", (e)=> {
-        if('localstorage' in window){
-            document.querySelector("#txtCodigoAlumno").value = window.localStorage.getItem("codigo");
-            document.querySelector("#txtNombreAlumno").value = window.localStorage.getItem("nombre");
-            document.querySelector("#txtDireccionAlumno").value = window.localStorage.getItem("direccion");
-            document.querySelector("#txtTelefonoAlumno").value = window.localStorage.getItem("telefono");
-        }else{
-            alert("alacenamiento en local no soportado!!");
-        }
-    })
-});
-
-
-/*function init(evrnt){
-    alert("hola la pagina a cargado");
-}*/
+  });
+  
+ 
+  function elegir_opcion() {
+    let opcion = document.getElementById('cboConvertir'),
+    de1 = document.getElementById('cboDe'),
+    a1 = document.getElementById('cboA');
+    de1.value="";
+    a1.value="";
+    de1.innerHTML="";
+    a1.innerHTML="";
+  
+    if(opcion.value == "moneda"){
+      var  array = ["dolar!Dolar","euro!Euro","quetzal!Quetzal","lempira!Lempira","cordoba!Cordoba"]; 
+    } else if(opcion.value == "longitud"){
+      var array = ["mm!MM","cm!CM","mt!MT","km!KM","milla!Milla"];
+    } else if(opcion.value == "almacenamiento"){
+      var array = ["bit!Bit","byte!Byte","kb!KB","mb!MB","gb!GB"];
+    } else if(opcion.value == "peso"){
+      var array = ["gramo!Gramo","kg!KG","libra!Libra","onza!Onza","tonelada!Tonelada"];
+    };
+  
+    for(var i=0;i<array.length;i++){ 
+      var repair = array[i].split("!");
+      var newop = document.createElement("option");
+      newop.value = repair[0]
+      newop.innerHTML = repair[1];
+      de1.options.add(newop);
+    }; 
+    for(var i=0;i<array.length;i++){ 
+      var repair = array[i].split("!");
+      var newop = document.createElement("option");
+      newop.value = repair[0]
+      newop.innerHTML = repair[1];
+      a1.options.add(newop);
+    };
+   }
