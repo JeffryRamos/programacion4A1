@@ -25,7 +25,7 @@
             </div>
         </div>
     </form>
-    <form method="post" id="frmConversores">
+    <form method="post" id="frmConversoresMonedas">
         <div class="container">
             <div class="row row-cols-4 p-2">
                 <div class="col">
@@ -46,6 +46,45 @@
                         <option value="quetzal">Quetzales</option>
                         <option value="lempira">Lempiras</option>
                         <option value="cordoba">Cordobas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row-cols-4 p-2">
+                <div class="col text-center">
+                    <input type="text" required="required" pattern="[0-9.]{1,}" placeholder="Cantidad" id="txtCantidadConversor" class="form-control">
+                </div>
+                <div class="col text-center">
+                    <p class="bg-success text-white" id="lblRespuesta">Respuesta: ?</p>
+                </div>
+            </div>
+            <div class="row row-cols-2 p-2">
+                <div class="col text-center">
+                    <input type="submit" id="btnConvertir" value="Convertir" class="btn btn-primary">
+                </div>
+            </div>
+        </div>
+    </form>
+    <form method="post" id="frmConversoresLongitud">
+        <div class="container">
+            <div class="row row-cols-4 p-2">
+                <div class="col">
+                    DE:
+                    <select id="cboDe" class="form-control">
+                        <option value="metro">metro</option>
+                        <option value="centimetro">centimetro</option>
+                        <option value="quilometro">quilometro</option>
+                        <option value="milla">milla</option>
+                        <option value="pies">pies</option>
+                    </select>
+                </div>
+                <div class="col">
+                    A:
+                    <select id="cboA" class="form-control">
+                        <option value="metro">metro</option>
+                        <option value="centimetro">centimetro</option>
+                        <option value="quilometro">quilometro</option>
+                        <option value="milla">milla</option>
+                        <option value="pies">pies</option>
                     </select>
                 </div>
             </div>
