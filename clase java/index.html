@@ -8,13 +8,25 @@
     <title>Conversores</title>
 </head>
 <body>
+    <div class="row row-cols-2">
+        <div class="col text-center bg-info text-white">
+            APP CONVERSORES
+        </div>
+    </div>
+
+    <form method="topo" id="frmTipo">
+        <div class="row row-cols-4">
+            <div class="col">
+            TIPO:
+            <select id="cboTipo" class="form-tipo">
+                <option value="monedas">monedas</option>
+                <option value="longitud">longitud</option>
+            </select>
+            </div>
+        </div>
+    </form>
     <form method="post" id="frmConversores">
         <div class="container">
-            <div class="row row-cols-2">
-                <div class="col text-center bg-info text-white">
-                    APP CONVERSORES
-                </div>
-            </div>
             <div class="row row-cols-4 p-2">
                 <div class="col">
                     DE:
