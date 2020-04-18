@@ -4,10 +4,13 @@ var appalumnos = new Vue({
         alumno:{
             idAlumno : 0,
             accion    : 'nuevo',
-            codigo    : '',
             nombre    : '',
             direccion : '',
             telefono  : '',
+            seccion    : '',
+            nie    : '',
+            grado    : '',
+            email    : '',
             msg       : ''
         }
     },
@@ -20,10 +23,13 @@ var appalumnos = new Vue({
         limpiarAlumnos(){
             this.alumno.idAlumno=0;
             this.alumno.accion="nuevo";
-            this.alumno.codigo="";
             this.alumno.nombre="";
             this.alumno.direccion="";
             this.alumno.telefono="";
+            this.alumno.seccion="";
+            this.alumno.nie="";
+            this.alumno.grado="";
+            this.alumno.email="";
             this.alumno.msg="";
         }
     }

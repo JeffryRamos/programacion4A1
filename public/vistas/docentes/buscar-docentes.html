@@ -12,25 +12,27 @@
                 <thead>
                     <tr>
                         <th colspan="7">
-                            <input type="text" v-model="valor" v-on:keyup="buscarDocentes" placeholder="codigo, nombre, dui o nit" class="form-control">
+                            <input type="text" v-model="valor" v-on:keyup="buscarDocentes" placeholder="Codigo, Nombre, Dui o Nit" class="form-control">
                         </th>
                     </tr>
                     <tr>
-                        <th>CODIGO</th>
                         <th>NOMBRE</th>
                         <th>DIRECCION</th>
                         <th>TELEFONO</th>
+                        <th>SECCION</th>
+                        <th>CODIGO</th>
                         <th>DUI</th>
-                        <th>NIT</th> 
+                        <th>NIT</th>
                         <th> </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="mi_docente in mis_docentes" :key="mi_docente.idDocente" v-on:click="modificarDocente(mi_docente)" >
-                        <td>{{ mi_docente.codigo }}</td>
                         <td>{{ mi_docente.nombre }}</td>
                         <td>{{ mi_docente.direccion }}</td>
                         <td>{{ mi_docente.telefono }}</td>
+                        <td>{{ mi_docente.seccion }}</td>
+                        <td>{{ mi_docente.codigo }}</td>
                         <td>{{ mi_docente.dui }}</td>
                         <td>{{ mi_docente.nit }}</td>
                         <td>

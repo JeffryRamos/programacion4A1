@@ -4,10 +4,11 @@ var appdocentes = new Vue({
         docente:{
             idDocente : 0,
             accion    : 'nuevo',
-            codigo    : '',
             nombre    : '',
             direccion : '',
             telefono  : '',
+            seccion    : '',
+            codigo    : '',
             dui       : '',
             nit       : '',
             msg       : ''
@@ -23,10 +24,11 @@ var appdocentes = new Vue({
         limpiarDocentes(){
             this.docente.idDocente=0;
             this.docente.accion="nuevo";
-            this.docente.codigo="";
             this.docente.nombre="";
             this.docente.direccion="";
             this.docente.telefono="";
+            this.docente.seccion="";
+            this.docente.codigo="";
             this.docente.dui="";
             this.docente.nit="";
             this.docente.msg="";

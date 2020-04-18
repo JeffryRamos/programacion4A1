@@ -21,9 +21,6 @@ class docente{
         $this->validar_datos();
     }
     private function validar_datos(){
-        if( empty($this->datos['codigo']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el codigo del docente';
-        }
         if( empty($this->datos['nombre']) ){
             $this->respuesta['msg'] = 'por favor ingrese el nombre del docente';
         }
@@ -36,11 +33,12 @@ class docente{
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO docentes (codigo,nombre,direccion,telefono,dui,nit) VALUES(
-                        "'. $this->datos['codigo'] .'",
+                    INSERT INTO docentes (nombre,direccion,telefono,seccion,codigo,dui,nit) VALUES(
                         "'. $this->datos['nombre'] .'",
                         "'. $this->datos['direccion'] .'",
                         "'. $this->datos['telefono'] .'",
+                        "'. $this->datos['seccion'] .'",
+                        "'. $this->datos['codigo'] .'",
                         "'. $this->datos['dui'] .'",
                         "'. $this->datos['nit'] .'"
                     )
@@ -49,10 +47,11 @@ class docente{
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
                     UPDATE docentes SET
-                        codigo      = "'. $this->datos['codigo'] .'",
                         nombre      = "'. $this->datos['nombre'] .'",
                         direccion   = "'. $this->datos['direccion'] .'",
                         telefono    = "'. $this->datos['telefono'] .'",
+                        seccion      = "'. $this->datos['seccion'] .'",
+                        codigo      = "'. $this->datos['codigo'] .'",
                         dui         = "'. $this->datos['dui'] .'",
                         nit         = "'. $this->datos['nit'] .'"
                     WHERE idDocente = "'. $this->datos['idDocente'] .'"
@@ -63,7 +62,7 @@ class docente{
     }
     public function buscarDocente($valor = ''){
         $this->db->consultas('
-            select docentes.idDocente, docentes.codigo, docentes.nombre, docentes.direccion, docentes.telefono, docentes.dui, docentes.nit
+            select docentes.idDocente, docentes.nombre, docentes.direccion, docentes.telefono, docentes.seccion, docentes.codigo, docentes.dui, docentes.nit
             from docentes
             where docentes.codigo like "%'. $valor .'%" or docentes.nombre like "%'. $valor .'%" or docentes.dui like "%'. $valor .'%" or docentes.nit like "%'. $valor .'%"
 
