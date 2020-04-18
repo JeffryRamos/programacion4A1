@@ -1,9 +1,9 @@
-<form v-on:submit.prevent="guardarMatriculas" v-on:reset="limpiarMatriculas" id="frm-matriculas">
+<form v-on:submit.prevent="guardarLibros" v-on:reset="limpiarLibros" id="frm-libros">
     <div class="card text-white bg-dark mb-3" style="max-width: 24rem;">
         <div class="card-header">
-            MANTENIMIENTO DE MATRICULAS
+            MANTENIMIENTO DE LIBROS
 
-            <button type="button" id="btn-close-matriculas" class="close" aria-label="Close">
+            <button type="button" id="btn-close-libros" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -11,49 +11,59 @@
             <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        PERIODO:
+                        CODIGO:
                     </div>
                     <div class="col">
-                        <v-select v-model="matricula.periodo" :options="periodos" placeholder="Seleccione un periodo" />
-                    </div>
-                </div>
-            </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col">
-                    <div class="col">
-                        ALUMNO:
-                    </div>
-                    <div class="col">
-                        <v-select v-model="matricula.alumno" :options="alumnos" placeholder="Seleccione un alumno" />
+                        <input type="text" required v-model="libro.codigo" placeholder="000" class="form-control">
                     </div>
                 </div>
             </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        FECHA MATRICULA:
+                        Titulo:
                     </div>
                     <div class="col">
-                        <input type="date" v-model="matricula.fecha" class="form-control form-control-sm">
+                        <input type="text" required v-model="libro.titulo" placeholder="AAAAAAA" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        Año:
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="libro.edicion" placeholder="0000" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        Genero:
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="libro.genero" placeholder="AAAAAAA" class="form-control">
                     </div>
                 </div>
             </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col text-center">
                     <div class="col">
-                        <input id="btnGuardarMatriculas" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
+                        <input id="btnGuardarLibros" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
                         <input type="reset" class="btn btn-outline-warning text-white" value="Limpiar">
-                        <input type="button" class="btn btn-outline-success mostrar-buscar-matriculas text-white" data-modulo="matriculas" data-form="buscar-matriculas" value="Buscar" >
+                        <input type="button" class="btn btn-outline-success mostrar-buscar-libros text-white" data-modulo="libros" data-form="buscar-libros" value="Buscar" >
                 </div>
             </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col text-center">
                     <div class="col">
-                        <div class="alert alert-success" role="alert">{{ matricula.msg }}</div>
+                        <div class="alert alert-success" role="alert">{{ libro.msg }}</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </form>
-<script src="public/vistas/matriculas/matriculas.js"></script>
+<script src="public/vistas/libros/libros.js"></script>

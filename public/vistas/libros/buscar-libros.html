@@ -1,0 +1,42 @@
+<form method="post" id="frm-buscar-libros">
+    <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
+        <div class="card-header">
+            BUSQUEDA DE LIBROS
+
+            <button type="button" id="btn-close-buscar-libros" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <table id="tbl-buscar-libros" class="table-striped table-dark table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="5">
+                            <input type="text" v-model="valor" v-on:keyup="buscarLibros" placeholder="Codigo, Titulo o Genero" class="form-control">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>CODIGO</th>
+                        <th>TITULO</th>
+                        <th>AÑO</th> 
+                        <th>GENERO</th> 
+
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_libro in mis_libros" :key="mi_libro.idLibro" v-on:click="modificarLibro(mi_libro)" >
+                        <td>{{ mi_libro.codigo }}</td>
+                        <td>{{ mi_libro.titulo }}</td>
+                        <td>{{ mi_libro.edicion }}</td>
+                        <td>{{ mi_libro.genero }}</td>
+                        <td>
+                            <input v-on:click="eliminarLibro(mi_libro.idLibro)" type="button" class="btn btn-outline-danger text-white" value="del">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/libros/buscar-libros.js"></script>
