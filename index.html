@@ -10,9 +10,12 @@
     <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
 </head> 
 <body class="bg-secondary">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Simplify Book</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Start Bootstrap </div>
+      <div class="list-group list-group-flush">
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" href="#">Inicio</a>
@@ -34,19 +37,32 @@
           </li>
         </ul>
       </div>
-    </nav>
-    <div class="container">
-      <div id="modulos">
-        <div class="modulos" id="vistas-estudiantes"></div>
-        <div class="modulos" id="vistas-buscar-estudiantes"></div>
-        <div class="modulos" id="vistas-docentes"></div>
-        <div class="modulos" id="vistas-buscar-docentes"></div>
-        <div class="modulos" id="vistas-libros"></div>
-        <div class="modulos" id="vistas-buscar-libros"></div>
-        <div class="modulos" id="vistas-pretamos"></div>
-        <div class="modulos" id="vistas-historial"></div>
-      </div>
     </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      
+        <button class="btn btn-primary" id="menu-toggle">Menu</button>
+        <div class="container">
+          <div id="modulos">
+            <div class="modulos" id="vistas-estudiantes"></div>
+            <div class="modulos" id="vistas-buscar-estudiantes"></div>
+            <div class="modulos" id="vistas-docentes"></div>
+            <div class="modulos" id="vistas-buscar-docentes"></div>
+            <div class="modulos" id="vistas-libros"></div>
+            <div class="modulos" id="vistas-buscar-libros"></div>
+            <div class="modulos" id="vistas-pretamos"></div>
+            <div class="modulos" id="vistas-historial"></div>
+          </div>
+        </div>
+
+        
+      
+  </div>
+  <!-- /#wrapper -->
+    
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="public/js/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
