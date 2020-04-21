@@ -33,7 +33,7 @@ class alumno{
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO alumnos (nombre,direccion,telefono,seccion,nie,grado,email) VALUES(
+                    INSERT INTO estudiantes (nombre,direccion,telefono,seccion,nie,grado,email) VALUES(
                         "'. $this->datos['nombre'] .'",
                         "'. $this->datos['direccion'] .'",
                         "'. $this->datos['telefono'] .'",
@@ -46,7 +46,7 @@ class alumno{
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
-                    UPDATE alumnos SET
+                    UPDATE estudiantes SET
                         nombre     = "'. $this->datos['nombre'] .'",
                         direccion  = "'. $this->datos['direccion'] .'",
                         telefono   = "'. $this->datos['telefono'] .'",
@@ -54,7 +54,7 @@ class alumno{
                         nie     = "'. $this->datos['nie'] .'",
                         grado     = "'. $this->datos['grado'] .'",
                         email     = "'. $this->datos['email'] .'"
-                    WHERE idAlumno = "'. $this->datos['idAlumno'] .'"
+                    WHERE id_estudiante = "'. $this->datos['id_estudiante'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
@@ -62,18 +62,18 @@ class alumno{
     }
     public function buscarAlumno($valor = ''){
         $this->db->consultas('
-            select alumnos.idAlumno, alumnos.nombre, alumnos.direccion, alumnos.telefono, alumnos.seccion, alumnos.nie, alumnos.grado, alumnos.email
-            from alumnos
-            where alumnos.nombre like "%'. $valor .'%" or alumnos.telefono like "%'. $valor .'%" or alumnos.nie like "%'.$valor.'%"
+            select estudiantes.id_estudiante, estudiante.nombre, estudiantes.direccion, estudiantes.telefono, estudiantes.seccion, estudiantes.nie, estudiantes.grado, estudiantes.email
+            from estudiantes
+            where estudiantes.nombre like "%'. $valor .'%" or estudiantes.telefono like "%'. $valor .'%" or estudiantes.nie like "%'.$valor.'%"
 
         ');
         return $this->respuesta = $this->db->obtener_data();
     }
     public function eliminarAlumno($idAlumno = 0){
         $this->db->consultas('
-            DELETE alumnos
-            FROM alumnos
-            WHERE alumnos.idAlumno="'.$idAlumno.'"
+            DELETE estudiantes
+            FROM estudiantes
+            WHERE estudiantes.id_estudiante="'.$idAlumno.'"
         ');
         return $this->respuesta['msg'] = 'Registro eliminado correctamente';;
     }

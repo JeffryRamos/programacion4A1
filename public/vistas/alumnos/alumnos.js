@@ -2,7 +2,7 @@ var appalumnos = new Vue({
     el:'#frm-alumnos',
     data:{
         alumno:{
-            idAlumno : 0,
+            id_estudiante : 0,
             accion    : 'nuevo',
             nombre    : '',
             direccion : '',
@@ -21,7 +21,7 @@ var appalumnos = new Vue({
             });
         },
         limpiarAlumnos(){
-            this.alumno.idAlumno=0;
+            this.alumno.id_estudiante=0;
             this.alumno.accion="nuevo";
             this.alumno.nombre="";
             this.alumno.direccion="";
