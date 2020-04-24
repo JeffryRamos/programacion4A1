@@ -1,26 +1,26 @@
-var appbuscar_docentes = new Vue({
-    el: '#frm-buscar-docentes',
+var appBuscarDocentes = new Vue({
+    el:'#frm-buscar-docentes',
     data:{
-        mis_docentes:[],
+        misdocentes:[],
         valor:''
     },
     methods:{
-        buscarDocentes(){
-            fetch(`private/Modulos/docentes/procesos.php?proceso=buscarDocente&docente=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
-                this.mis_docentes = resp;
+        buscarDocente:function(){
+            fetch(`private/Modulos/docentes/procesos.php?proceso=buscarDocente&docente=${this.valor}`).then(resp=>resp.json()).then(resp=>{
+                this.misdocentes = resp;
             });
         },
-        modificarDocente(docente){
-            appdocentes.docente = docente;
-            appdocentes.docente.accion = 'modificar';
+        modificarDocente:function(docente){
+            appdocente.docente = docente;
+            appdocente.docente.accion = 'modificar';
         },
-        eliminarDocente(idDocente){
-            fetch(`private/Modulos/docentes/procesos.php?proceso=eliminarDocente&docente=${idDocente}`).then( resp=>resp.json() ).then(resp=>{
-                this.buscarDocentes();
+        eliminarDocente:function(idDocente){
+            fetch(`private/Modulos/docentes/procesos.php?proceso=eliminarDocente&docente=${idDocente}`).then(resp=>resp.json()).then(resp=>{
+                this.buscarDocente();
             });
         }
     },
-    created(){
-        this.buscarDocentes();
+    created:function(){
+        this.buscarDocente();
     }
 });

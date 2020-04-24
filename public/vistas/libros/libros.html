@@ -1,65 +1,56 @@
-<form v-on:submit.prevent="guardarLibros" v-on:reset="limpiarLibros" id="frm-libros">
+<form v-on:submit.prevent="guardarLibro" data-accion="nuevo" data-idlibro='' id="frm-libros" method="post">
     <div class="card text-white bg-dark mb-3" style="max-width: 24rem;">
         <div class="card-header">
-            MANTENIMIENTO DE LIBROS
-
+            Mantenimiento Libros 
+        
             <button type="button" id="btn-close-libros" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="card-body">
-            <div class="row row-cols-1 p-2">
-                <div class="row-col">
-                    <div class="col">
-                        CODIGO:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="libro.codigo" placeholder="000" class="form-control">
-                    </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    CODIGO
+                </div>
+                <div class="col-6">
+                    <input type="text" v-model="libro.codigo" placeholder="AAAA000" class="form-control">
                 </div>
             </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col">
-                    <div class="col">
-                        Titulo:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="libro.titulo" placeholder="AAAAAAA" class="form-control">
-                    </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    TITULO
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="libro.titulo" placeholder="AAAAAA" class="form-control">
                 </div>
             </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col">
-                    <div class="col">
-                        Año:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="libro.edicion" placeholder="0000" class="form-control">
-                    </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    AÑO EDICION
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="libro.edicion" placeholder="0000" class="form-control">
                 </div>
             </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col">
-                    <div class="col">
-                        Genero:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="libro.genero" placeholder="AAAAAAA" class="form-control">
-                    </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    GENERO
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="libro.genero" placeholder="AAAAAAAA" class="form-control">
                 </div>
             </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col text-center">
-                    <div class="col">
-                        <input id="btnGuardarLibros" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
-                        <input type="reset" class="btn btn-outline-warning text-white" value="Limpiar">
-                        <input type="button" class="btn btn-outline-success mostrar-buscar-libros text-white" data-modulo="libros" data-form="buscar-libros" value="Buscar" >
+            <div class="row p-2"> 
+                <div class="col-12 text-center">
+                    <input id="btnguardarLibros" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
+                    <input type="reset" class="btn btn-outline-warning text-white" value="Limpiar">
+                    <input type="button" class="btn btn-outline-success mostrar-buscar-libros text-white" data-modulo="libros" data-form="buscar-libros" value="Buscar">
                 </div>
             </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col text-center">
-                    <div class="col">
-                        <div class="alert alert-success" role="alert">{{ libro.msg }}</div>
+            <div class="row p-2">
+                <div class="col-12 text-center">
+                    <div class="alert alert-success" role="alert">
+                        {{ libro.msg }}
                     </div>
                 </div>
             </div>

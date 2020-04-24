@@ -1,6 +1,6 @@
 <?php 
 include('../../Config/Config.php');
-$libro = new libro($conexion);
+$libro = new libro($conexion); 
 
 $proceso = '';
 if( isset($_GET['proceso']) && strlen($_GET['proceso'])>0 ){
@@ -22,7 +22,7 @@ class libro{
     }
     private function validar_datos(){
         if( empty($this->datos['codigo']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el codigo del libro';
+            $this->respuesta['msg'] = 'por favor ingrese el nombre del libro';
         }
         if( empty($this->datos['titulo']) ){
             $this->respuesta['msg'] = 'por favor ingrese el titulo del libro';
@@ -33,43 +33,42 @@ class libro{
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO libros (codigo,nombre,edicion,genero) VALUES(
+                    INSERT INTO libros (codigo,titulo,edicion,genero) VALUES(
                         "'. $this->datos['codigo'] .'",
                         "'. $this->datos['titulo'] .'",
                         "'. $this->datos['edicion'] .'",
-                        "'. $this->datos['gnero'] .'"
+                        "'. $this->datos['genero'] .'"
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
-                    UPDATE libros SET
-                        codigo      = "'. $this->datos['codigo'] .'",
-                        titulo      = "'. $this->datos['titulo'] .'",
-                        edicion      = "'. $this->datos['edicion'] .'",
-                        genero      = "'. $this->datos['genero'] .'"
+                   UPDATE libros SET
+                        codigo     = "'. $this->datos['codigo'] .'",
+                        titulo  = "'. $this->datos['titulo'] .'",
+                        edicion   = "'. $this->datos['edicion'] .'",
+                        genero   = "'. $this->datos['genero'] .'"
                     WHERE idLibro = "'. $this->datos['idLibro'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
         }
     }
-    public function buscarLibro($valor = ''){
+    public function buscarLibros($valor=''){
         $this->db->consultas('
             select libros.idLibro, libros.codigo, libros.titulo, libros.edicion, libros.genero
             from libros
             where libros.codigo like "%'. $valor .'%" or libros.titulo like "%'. $valor .'%" or libros.genero like "%'. $valor .'%"
-
         ');
-        return $this->respuesta = $this->db->obtener_data();
+        return $this->respuesta = $this->db->obtener_datos();
     }
-    public function eliminarLibro($idLibro = 0){
+    public function eliminarLibros($idLibro=''){
         $this->db->consultas('
-            DELETE libros
-            FROM libros
-            WHERE libros.idLibro="'.$idLibro.'"
+            delete libros
+            from libros
+            where libros.idLibro = "'.$idLibro.'"
         ');
-        return $this->respuesta['msg'] = 'Registro eliminado correctamente';;
+        $this->respuesta['msg'] = 'Registro eliminado correctamente';
     }
 }
 ?>

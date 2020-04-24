@@ -46,36 +46,35 @@ class docente{
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
-                    UPDATE docentes SET
-                        nombre      = "'. $this->datos['nombre'] .'",
-                        direccion   = "'. $this->datos['direccion'] .'",
-                        telefono    = "'. $this->datos['telefono'] .'",
-                        seccion      = "'. $this->datos['seccion'] .'",
-                        codigo      = "'. $this->datos['codigo'] .'",
-                        dui         = "'. $this->datos['dui'] .'",
-                        nit         = "'. $this->datos['nit'] .'"
+                   UPDATE docentes SET
+                        nombre     = "'. $this->datos['nombre'] .'",
+                        direccion  = "'. $this->datos['direccion'] .'",
+                        telefono   = "'. $this->datos['telefono'] .'",
+                        seccion     = "'. $this->datos['seccion'] .'",
+                        codigo     = "'. $this->datos['codigo'] .'",
+                        dui     = "'. $this->datos['dui'] .'",
+                        nit   = "'. $this->datos['nit'] .'"
                     WHERE idDocente = "'. $this->datos['idDocente'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
         }
     }
-    public function buscarDocente($valor = ''){
+    public function buscarDocente($valor=''){
         $this->db->consultas('
             select docentes.idDocente, docentes.nombre, docentes.direccion, docentes.telefono, docentes.seccion, docentes.codigo, docentes.dui, docentes.nit
             from docentes
             where docentes.codigo like "%'. $valor .'%" or docentes.nombre like "%'. $valor .'%" or docentes.dui like "%'. $valor .'%" or docentes.nit like "%'. $valor .'%"
-
         ');
-        return $this->respuesta = $this->db->obtener_data();
+        return $this->respuesta = $this->db->obtener_datos();
     }
-    public function eliminarDocente($idDocente = 0){
+    public function eliminarDocente($idDocente=''){
         $this->db->consultas('
-            DELETE docentes
-            FROM docentes
-            WHERE docentes.idDocente="'.$idDocente.'"
+            delete docentes
+            from docentes
+            where docentes.idDocente = "'.$idDocente.'"
         ');
-        return $this->respuesta['msg'] = 'Registro eliminado correctamente';;
+        $this->respuesta['msg'] = 'Registro eliminado correctamente';
     }
 }
 ?>

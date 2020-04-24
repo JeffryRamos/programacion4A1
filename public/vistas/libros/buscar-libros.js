@@ -1,26 +1,26 @@
-var appbuscar_libros = new Vue({
-    el: '#frm-buscar-libros',
+var appBuscarLibros = new Vue({
+    el:'#frm-buscar-libros',
     data:{
-        mis_libros:[],
+        mislibros:[], 
         valor:''
     },
-    methods:{ 
-        buscarLibros(){
-            fetch(`private/Modulos/libros/procesos.php?proceso=buscarLibro&libro=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
-                this.mis_libros = resp;
+    methods:{
+        buscarLibro:function(){
+            fetch(`private/Modulos/libros/procesos.php?proceso=buscarLibro&libro=${this.valor}`).then(resp=>resp.json()).then(resp=>{
+                this.mislibros = resp;
             });
         },
-        modificarLibro(libro){
-            applibros.libro = libro;
-            applibros.libro.accion = 'modificar';
+        modificarLibro:function(libro){
+            applibro.libro = libro;
+            applibro.libro.accion = 'modificar';
         },
-        eliminarLibro(idLibro){
-            fetch(`private/Modulos/libros/procesos.php?proceso=eliminarLibro&libro=${idLibro}`).then( resp=>resp.json() ).then(resp=>{
-                this.buscarLibros();
+        eliminarLibro:function(idLibro){
+            fetch(`private/Modulos/libros/procesos.php?proceso=eliminarLibro&libro=${idLibro}`).then(resp=>resp.json()).then(resp=>{
+                this.buscarLibro();
             });
         }
     },
-    created(){
-        this.buscarLibros();
+    created:function(){
+        this.buscarLibro();
     }
 });

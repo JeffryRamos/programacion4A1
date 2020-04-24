@@ -1,94 +1,81 @@
-<form method="post" id="frm-alumnos" v-on:submit.prevent="guardarAlumnos" v-on:reset.prevent="limpiarAlumnos">
+<form v-on:submit.prevent="guardarAlumno" data-accion="nuevo" data-idalumno='' id="frm-alumnos" method="post">
     <div class="card text-white bg-dark mb-3" style="max-width: 24rem;">
         <div class="card-header">
-            MANTENIMIENTO DE ALUMNOS
-
+            Mantenimiento Alumnos
+        
             <button type="button" id="btn-close-alumnos" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col">
-                    <div class="col">
-                        NOMBRE:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="alumno.nombre" placeholder="AAA AAAA" class="form-control">
-                    </div>
+        </div>
+        <div class="card-body">
+            <div class="row p-2">
+                <div class="col-4">
+                    NOMBRE
+                </div>
+                <div class="col-6">
+                    <input type="text" v-model="alumno.nombre" placeholder="AAA AAA" class="form-control">
                 </div>
             </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col">
-                    <div class="col">
-                        DIRECCION:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="alumno.direccion" placeholder="XXXX000000" class="form-control">
-                    </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    DIRECCION
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="alumno.direccion" placeholder="AAAAAA" class="form-control">
                 </div>
             </div>
-            <div class="row row-cols-1">
-                <div class="row-col">
-                    <div class="col">
-                        TELEFONO:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="alumno.telefono" placeholder="0000-0000" class="form-control">
-                    </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    TEL
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="alumno.telefono" placeholder="0000-0000" class="form-control">
                 </div>
             </div>
-            <div class="row row-cols-1">
-                <div class="row-col">
-                    <div class="col">
-                        SECCION:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="alumno.seccion" placeholder="X" class="form-control">
-                    </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    SECCION
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="alumno.seccion" placeholder="A" class="form-control">
                 </div>
             </div>
-            <div class="row row-cols-1">
-                <div class="row-col">
-                    <div class="col">
-                        NIE:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="alumno.nie" placeholder="00000000" class="form-control">
-                    </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    NIE
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="alumno.nie" placeholder="00000000" class="form-control">
                 </div>
             </div>
-            <div class="row row-cols-1">
-                <div class="row-col">
-                    <div class="col">
-                        GRADO:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="alumno.grado" placeholder="0°" class="form-control">
-                    </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    GRADO
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="alumno.grado" placeholder="0°" class="form-control">
                 </div>
             </div>
-            <div class="row row-cols-1">
-                <div class="row-col">
-                    <div class="col">
-                        EMAIL:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="alumno.email" placeholder="AAAAAAAA@XXXX.COM" class="form-control">
-                    </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    EMAIL
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="alumno.email" placeholder="AAAAAA@XXXXXX.AAA" class="form-control">
                 </div>
             </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col text-center">
-                    <div class="col">
-                        <input id="btnGuardarAlumnos" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
-                        <input type="reset" class="btn btn-outline-warning text-white" value="Limpiar">
-                        <input type="button" class="btn btn-outline-success mostrar-buscar-alumnos text-white" data-modulo="alumnos" data-form="buscar-alumnos" value="Buscar" data-modulo="buscar-alumnos" >
-                    </div>
+            <div class="row p-2"> 
+                <div class="col-12 text-center">
+                    <input id="btnGuardarAlumnos" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
+                    <input type="reset" class="btn btn-outline-warning text-white" value="Limpiar">
+                    <input type="button" class="btn btn-outline-success mostrar-buscar-alumnos text-white" data-modulo="alumnos" data-form="buscar-alumnos" value="Buscar">
                 </div>
             </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col text-center">
-                    <div class="col" id="respuestaAlumno"> </div>
+            <div class="row p-2">
+                <div class="col-12 text-center">
+                    <div class="alert alert-success" role="alert">
+                        {{ alumno.msg }}
+                    </div>
                 </div>
             </div>
         </div>

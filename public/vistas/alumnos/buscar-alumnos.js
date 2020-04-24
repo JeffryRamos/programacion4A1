@@ -1,26 +1,26 @@
-var appbuscar_alumnos = new Vue({
-    el: '#frm-buscar-alumnos',
+var appBuscarAlumnos = new Vue({
+    el:'#frm-buscar-alumnos',
     data:{
-        mis_alumnos:[],
+        misalumnos:[],
         valor:''
     },
     methods:{
-        buscarAlumnos(){
-            fetch(`private/Modulos/alumnos/procesos.php?proceso=buscarAlumno&alumno=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
-                this.mis_alumnos = resp;
+        buscarAlumno:function(){
+            fetch(`private/Modulos/alumnos/procesos.php?proceso=buscarAlumno&alumno=${this.valor}`).then(resp=>resp.json()).then(resp=>{
+                this.misalumnos = resp;
             });
         },
-        modificarAlumno(alumno){
-            appalumnos.alumno = alumno;
-            appalumnos.alumno.accion = 'modificar';
+        modificarAlumno:function(alumno){
+            appalumno.alumno = alumno;
+            appalumno.alumno.accion = 'modificar';
         },
-        eliminarAlumno(idAlumno){
-            fetch(`private/Modulos/alumnos/procesos.php?proceso=eliminarAlumno&alumno=${idAlumno}`).then( resp=>resp.json() ).then(resp=>{
-                this.buscarAlumnos();
+        eliminarAlumno:function(idAlumno){
+            fetch(`private/Modulos/alumnos/procesos.php?proceso=eliminarAlumno&alumno=${idAlumno}`).then(resp=>resp.json()).then(resp=>{
+                this.buscarAlumno();
             });
         }
     },
-    created(){
-        this.buscarAlumnos();
+    created:function(){
+        this.buscarAlumno();
     }
 });
