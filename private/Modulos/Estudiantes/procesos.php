@@ -1,23 +1,23 @@
 <?php 
 include('../../Config/Config.php');
-$alumno = new alumno($conexion);
+$estudiante = new estudiante($conexion);
 
 $proceso = '';
 if( isset($_GET['proceso']) && strlen($_GET['proceso'])>0 ){
 	$proceso = $_GET['proceso'];
 }
-$alumno->$proceso( $_GET['alumno'] );
-print_r(json_encode($alumno->respuesta));
+$estudiante->$proceso( $_GET['estudiante'] );
+print_r(json_encode($estudiante->respuesta));
 
-class alumno{
+class estudiante{
     private $datos = array(), $db;
     public $respuesta = ['msg'=>'correcto'];
     
     public function __construct($db){
         $this->db=$db;
     }
-    public function recibirDatos($alumno){
-        $this->datos = json_decode($alumno, true);
+    public function recibirDatos($estudiante){
+        $this->datos = json_decode($estudiante, true);
         $this->validar_datos();
     }
     private function validar_datos(){
@@ -27,13 +27,13 @@ class alumno{
         if( empty($this->datos['direccion']) ){
             $this->respuesta['msg'] = 'por favor ingrese la direccion del estudiante';
         }
-        $this->almacenar_alumno();
+        $this->almacenar_estudiante();
     }
-    private function almacenar_alumno(){
+    private function almacenar_estudiante(){
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO alumnos (nombre,direccion,telefono,seccion,nie,grado,email) VALUES(
+                    INSERT INTO estudiantes (nombre,direccion,telefono,seccion,nie,grado,email) VALUES(
                         "'. $this->datos['nombre'] .'",
                         "'. $this->datos['direccion'] .'",
                         "'. $this->datos['telefono'] .'",
@@ -46,7 +46,7 @@ class alumno{
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
-                   UPDATE alumnos SET
+                   UPDATE estudiantes SET
                         nombre     = "'. $this->datos['nombre'] .'",
                         direccion     = "'. $this->datos['direccion'] .'",
                         telefono  = "'. $this->datos['telefono'] .'",
@@ -54,25 +54,25 @@ class alumno{
                         nie  = "'. $this->datos['nie'] .'",
                         grado  = "'. $this->datos['grado'] .'",
                         email   = "'. $this->datos['email'] .'"
-                    WHERE idAlumno = "'. $this->datos['idAlumno'] .'"
+                    WHERE idEstudiante = "'. $this->datos['idEstudiante'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
         }
     }
-    public function buscarAlumno($valor=''){
+    public function buscarEstudiante($valor=''){
         $this->db->consultas('
-            select alumnos.idAlumno, alumnos.nombre, alumnos.direccion, alumnos.telefono, alumnos.seccion, alumnos.nie, alumnos.grado, alumnos.email
-            from alumnos
-            where alumnos.nombre like "%'. $valor .'%" or alumnos.telefono like "%'. $valor .'%" or alumnos.nie like "%'.$valor.'%"
+            select estudiantes.idEstudiante, estudiantes.nombre, estudiantes.direccion, estudiantes.telefono, estudiantes.seccion, estudiantes.nie, estudiantes.grado, estudiantes.email
+            from estudiantes
+            where estudiantes.nombre like "%'. $valor .'%" or estudiantes.telefono like "%'. $valor .'%" or estudiantes.nie like "%'.$valor.'%"
         ');
         return $this->respuesta = $this->db->obtener_datos();
     }
-    public function eliminarAlumno($idAlumno=''){
+    public function eliminarEstudiante($idEstudiante=''){
         $this->db->consultas('
-            delete alumnos
-            from alumnos
-            where alumnos.idAlumno = "'.$idAlumno.'"
+            delete estudiantes
+            from estudiantes
+            where estudiantes.idEstudiante = "'.$idEstudiante.'"
         ');
         $this->respuesta['msg'] = 'Registro eliminado correctamente';
     }

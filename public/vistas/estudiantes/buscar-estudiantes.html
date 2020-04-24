@@ -1,18 +1,18 @@
-<form method="POST" id="frm-buscar-alumnos">
+<form method="POST" id="frm-buscar-estudiantes">
     <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
         <div class="car-header">
-            BUSQUEDA ALUMNOS
+            BUSQUEDA ESTUDIANTES 
 
-            <button type="button" id="btn-close-buscar-alumnos" class="close" aria-label="Close">
+            <button type="button" id="btn-close-buscar-estudiantes" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="card-body">
-            <table id="tbl-buscar-alumnos" class="table-striped table-dark table-bordered table-hover">
+            <table id="tbl-buscar-estudiantes" class="table-striped table-dark table-bordered table-hover">
                 <thead>
                     <tr>
                         <th colspan="5">
-                            <input type="text" v-model="valor" v-on:keyup="buscarAlumno" placeholder="Nombre, Telefono o Nie" class="form-control">
+                            <input type="text" v-model="valor" v-on:keyup="buscarEstudiante" placeholder="Nombre, Telefono o Nie" class="form-control">
                         </th>
                     </tr>
                     <tr>
@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="estudiante in misalumnos" :key="estudiante.idAlumno" v-on:click="modificarAlumno(estudiante)">
+                    <tr v-for="estudiante in misestudiantes" :key="estudiante.idEstudiante" v-on:click="modificarEstudiante(estudiante)">
                         <td>{{ estudiante.nombre }}</td>
                         <td>{{ estudiante.direccion }}</td>
                         <td>{{ estudiante.telefono }}</td>
@@ -36,7 +36,7 @@
                         <td>{{ estudiante.grado }}</td>
                         <td>{{ estudiante.email }}</td>
                         <td>
-                            <input v-on:click="eliminarAlumno(estudiante.idAlumno)" type="button" class="btn btn-outline-danger text-white" value="del">
+                            <input v-on:click="eliminarEstudiante(estudiante.idEstudiante)" type="button" class="btn btn-outline-danger text-white" value="del">
                         </td>
                     </tr>
                 </tbody>
@@ -44,4 +44,4 @@
         </div>
     </div>
 </form>
-<script src="public/vistas/alumnos/buscar-alumnos.js"></script>
+<script src="public/vistas/estudiantes/buscar-estudiantes.js"></script>
