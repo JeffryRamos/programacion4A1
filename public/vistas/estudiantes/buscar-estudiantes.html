@@ -1,5 +1,5 @@
 <form method="POST" id="frm-buscar-estudiantes">
-    <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
+    <div class="card text-dark bg-hover mb-3" style="max-width: 48rem;">
         <div class="car-header">
             BUSQUEDA ESTUDIANTES 
 
@@ -8,7 +8,7 @@
             </button>
         </div>
         <div class="card-body">
-            <table id="tbl-buscar-estudiantes" class="table-striped table-dark table-bordered table-hover">
+            <table id="tbl-buscar-estudiantes" class="table-striped table-hover table-bordered table-hover">
                 <thead>
                     <tr>
                         <th colspan="5">
@@ -36,7 +36,7 @@
                         <td>{{ estudiante.grado }}</td>
                         <td>{{ estudiante.email }}</td>
                         <td>
-                            <input v-on:click="eliminarEstudiante(estudiante.idEstudiante)" type="button" class="btn btn-outline-danger text-white" value="del">
+                            <input v-on:click="eliminarEstudiante(estudiante.idEstudiante)" type="button" class="btn btn-outline-danger text-dark" value="del">
                         </td>
                     </tr>
                 </tbody>

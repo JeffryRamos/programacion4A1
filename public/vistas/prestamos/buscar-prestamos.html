@@ -1,5 +1,5 @@
 <form method="post" id="frm-buscar-prestamos">
-    <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
+    <div class="card text-dark bg-hover mb-3" style="max-width: 48rem;">
         <div class="card-header">
             BUSQUEDA DE PRESTAMOS
 
@@ -8,7 +8,7 @@
             </button>
         </div>
         <div class="card-body">
-            <table id="tbl-buscar-prestamos" class="table-striped table-dark table-bordered table-hover">
+            <table id="tbl-buscar-prestamos" class="table-striped table-hover table-bordered table-hover">
                 <thead>
                     <tr>
                         <th colspan="3">
@@ -26,7 +26,7 @@
                         <td>{{ mi_prestamo.codigo }}</td>
                         <td>{{ mi_prestamo.nombre }}</td>
                         <td>
-                            <input v-on:click="eliminarprestamo(mi_prestamo.idPrestamo)" type="button" class="btn btn-outline-danger text-white" value="del">
+                            <input v-on:click="eliminarprestamo(mi_prestamo.idPrestamo)" type="button" class="btn btn-outline-danger text-dark" value="del">
                         </td>
                     </tr>
                 </tbody>

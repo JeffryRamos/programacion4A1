@@ -1,18 +1,18 @@
 <form method="POST" id="frm-buscar-libros">
-    <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
+    <div class="card text-dark bg-hover mb-3" style="max-width: 48rem;">
         <div class="car-header">
-            BUSQUEDA LIBROS 
+            BUSQUEDA DE LIBROS 
 
             <button type="button" id="btn-close-buscar-libros" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="card-body">
-            <table id="tbl-buscar-libros" class="table-striped table-dark table-bordered table-hover">
+            <table id="tbl-buscar-libros" class="table-striped table-hover table-bordered table-hover">
                 <thead>
                     <tr>
                         <th colspan="5">
-                            <input type="text" v-model="valor" v-on:keyup="buscarLibro" placeholder="Codigo, Titulo o Genero" class="form-control">
+                            <input type="text" v-model="valor" v-on:keyup="buscarLibro" placeholder="Nombre, Telefono o Nie" class="form-control">
                         </th>
                     </tr>
                     <tr>
@@ -30,7 +30,7 @@
                         <td>{{ libro.edicion }}</td>
                         <td>{{ libro.genero }}</td>
                         <td>
-                            <input v-on:click="eliminarLibro(libro.idLibro)" type="button" class="btn btn-outline-danger text-white" value="del">
+                            <input v-on:click="eliminarLibro(libro.idLibro)" type="button" class="btn btn-outline-danger text-dark" value="del">
                         </td>
                     </tr>
                 </tbody>
