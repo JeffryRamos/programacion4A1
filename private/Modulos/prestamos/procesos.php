@@ -1,84 +1,130 @@
 <?php 
-include('../../Config/Config.php');
-$matricula = new matricula($conexion);
+include('../../config/config.php');
+$prestamo = new prestamo($conexion);
 
 $proceso = '';
 if( isset($_GET['proceso']) && strlen($_GET['proceso'])>0 ){
 	$proceso = $_GET['proceso'];
 }
-$matricula->$proceso( $_GET['matricula'] );
-print_r(json_encode($matricula->respuesta));
+$prestamo->$proceso( $_GET['prestamo'] );
+print_r(json_encode($prestamo->respuesta));
 
-class matricula{
+class prestamo{
     private $datos = array(), $db;
     public $respuesta = ['msg'=>'correcto'];
     
     public function __construct($db){
         $this->db=$db;
     }
-    public function recibirDatos($matricula){
-        $this->datos = json_decode($matricula, true);
+    public function recibirDatos($prestamo){
+        $this->datos = json_decode($prestamo, true);
         $this->validar_datos();
     }
     private function validar_datos(){
-        if( empty($this->datos['periodo']['id']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el periodo del matricula';
+        if( empty($this->datos['estudiante']['id']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el nombre del estudiante';
         }
-        if( empty($this->datos['alumno']['id']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el alumno';
+        if( empty($this->datos['libro']['id']) ){
+            $this->respuesta['msg'] = 'por favor ingrese la libro';
         }
-        $this->almacenar_matricula();
+        if( empty($this->datos['prestamo']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el valor';
+        }
+        $this->almacenar_prestamo();
     }
-    private function almacenar_matricula(){
+    private function almacenar_prestamo(){
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO matriculas (idPeriodo,idAlumno,fecha) VALUES(
-                        "'. $this->datos['periodo']['id'] .'",
-                        "'. $this->datos['alumno']['id'] .'",
-                        "'. $this->datos['fecha'] .'"
+                    INSERT INTO prestamo (idestudiante,idlibro,prestamo,devolucion,valor) VALUES(
+                        "'. $this->datos['estudiante']['id'] .'",
+                        "'. $this->datos['libro']['id'] .'",
+                        "'. $this->datos['prestamo'] .'",
+                        "'. $this->datos['devolucion'] .'",
+                        "'. $this->datos['valor'] .'"
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
-                    UPDATE matriculas SET
-                        idPeriodo     = "'. $this->datos['periodo']['id'] .'",
-                        idAlumno      = "'. $this->datos['alumno']['id'] .'",
-                        fecha         = "'. $this->datos['fecha'] .'"
-                    WHERE idMatricula = "'. $this->datos['idMatricula'] .'"
+                    UPDATE prestamo SET
+                        idestudiante     = "'. $this->datos['estudiante']['id'] .'",
+                        idlibro      = "'. $this->datos['libro']['id'] .'",
+                        prestamo   = "'. $this->datos['prestamo'] .'",
+                        devolucion   = "'. $this->datos['devolucion'] .'",
+                        valor             = "'. $this->datos['valor'] .'"
+                    WHERE idPrestamo = "'. $this->datos['idPrestamo'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
         }
     }
-    public function buscarMatricula($valor = ''){
+    public function buscarPrestamo($valor = ''){
+        if( substr_count($valor, '-')===2 ){
+            $valor = implode('-', array_reverse(explode('-',$valor)));
+        }
         $this->db->consultas('
-            select matriculas.idMatricula, matriculas.codigo, matriculas.nombre
-            from matriculas
-            where matriculas.codigo like "%'. $valor .'%" or matriculas.nombre like "%'. $valor .'%"
+            select prestamo.idPrestamo, prestamo.idestudiante, prestamo.idlibro, prestamo.valor,
+                date_format(prestamo.prestamo,"%d-%m-%Y") AS prestamo, prestamo.prestamo AS f, 
+                date_format(prestamo.devolucion,"%d-%m-%Y") AS devolucion, prestamo.devolucion AS d,
+                
+                libros.genero, libros.codigo, 
+                estudiantes.dui, estudiantes.nombre,
+                prestamo.valor AS v
+
+            from prestamo
+                inner join libros on(libros.idlibro=prestamo.idlibro)
+                inner join estudiantes on(estudiantes.idestudiante=prestamo.idestudiante)
+            where libros.codigo like "%'. $valor .'%" or 
+                estudiantes.nombre like "%'. $valor .'%" or 
+                prestamo.prestamo like "%'. $valor .'%" or
+                prestamo.devolucion like "%'. $valor .'%"
 
         ');
-        return $this->respuesta = $this->db->obtener_data();
+        $prestamos = $this->respuesta = $this->db->obtener_data();
+        foreach ($prestamos as $key => $value) {
+            $datos[] = [
+                'idPrestamo' => $value['idPrestamo'],
+                'libro'      => [
+                    'id'      => $value['idlibro'],
+                    'label'   => $value['codigo']
+                ],
+                'estudiante'      => [
+                    'id'      => $value['idestudiante'],
+                    'label'   => $value['nombre']
+                ],
+                'prestamo'       => $value['f'],
+                'f'           => $value['prestamo'],
+
+                'devolucion'       => $value['d'],
+                'd'           => $value['devolucion'],
+
+                'valor'       => $value['v'],
+                'v'           => $value['valor']
+            ]; 
+        }
+        return $this->respuesta = $datos;
     }
-    public function traer_periodos_alumnos(){
+
+
+    public function traer_estudiante_libro(){
         $this->db->consultas('
-            select periodos.periodo AS label, periodos.idPeriodo AS id
-            from periodos
+            select estudiantes.nombre AS label, estudiantes.idestudiante AS id
+            from estudiantes
         ');
-        $periodos = $this->db->obtener_data();
+        $estudiantes = $this->db->obtener_data();
         $this->db->consultas('
-            select alumnos.nombre AS label, alumnos.idAlumno AS id
-            from alumnos
+            select libros.codigo AS label, libros.idlibro AS id
+            from libros
         ');
-        $alumnos = $this->db->obtener_data();
-        return $this->respuesta = ['periodos'=>$periodos, 'alumnos'=>$alumnos ];//array de php en v7+
+        $libros = $this->db->obtener_data();
+        return $this->respuesta = ['estudiantes'=>$estudiantes, 'libros'=>$libros ];
     }
-    public function eliminarMatricula($idMatricula = 0){
+    public function eliminarPrestamo($idPrestamo = 0){
         $this->db->consultas('
-            DELETE matriculas
-            FROM matriculas
-            WHERE matriculas.idMatricula="'.$idMatricula.'"
+            DELETE prestamo
+            FROM prestamo
+            WHERE prestamo.idPrestamo="'.$idPrestamo.'"
         ');
         return $this->respuesta['msg'] = 'Registro eliminado correctamente';;
     }

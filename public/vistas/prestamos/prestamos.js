@@ -6,17 +6,27 @@ var appprestamos = new Vue({
         prestamo:{
             idPrestamo : 0,
             accion    : 'nuevo',
-            prestamo     : '',
-            msg       : ''
+            estudiante   : {
+                idEstudiante : 0,
+                estudiante   : ''
             },
-            devolucion     : '',
+            libro    : {
+                idLibro : 0,
+                libro   : ''
+            },
+            prestamo  : '',
+            devolucion : '',
+            valor: '',
             msg       : ''
+        },
+        estudiantes : {},
+        libros  : {}
     },
     methods:{
         guardarPrestamos(){
-            fetch(`private/Modulos/prestamos/procesos.php?proceso=recibirDatos&prestamo=${JSON.stringify(this.prestamo)}`).then( resp=>resp.json() ).then(resp=>{
+             fetch(`private/modulos/prestamos/procesos.php?proceso=recibirDatos&prestamo=${JSON.stringify(this.prestamo)}`).then( resp=>resp.json() ).then(resp=>{
                 this.prestamo.msg = resp.msg;
-            });
+            }); 
         },
         limpiarPrestamos(){
             this.prestamo.idPrestamo=0;
@@ -25,9 +35,9 @@ var appprestamos = new Vue({
         }
     },
     created(){
-        fetch(`private/Modulos/prestamos/procesos.php?proceso=traer_periodos_alumnos&prestamo=''`).then( resp=>resp.json() ).then(resp=>{
-            this.periodos = resp.periodos;
-            this.alumnos = resp.alumnos;
+         fetch(`private/modulos/prestamos/procesos.php?proceso=traer_estudiante_libro&prestamo=''`).then( resp=>resp.json() ).then(resp=>{
+           this.estudiantes = resp.estudiantes;
+            this.libros = resp.libros; 
         });
     }
 });

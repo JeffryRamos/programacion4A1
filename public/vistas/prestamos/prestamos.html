@@ -11,24 +11,43 @@
             <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        FECHA PRESTAMO:
+                        PERSONA
+                    </div>
+                    <div class="col">
+                        <v-select v-model="prestamo.persona" :options="personas" placeholder="Seleccione una persona"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col"> 
+                    <div class="col">
+                        LIBRO
+                    </div>
+                    <div class="col">
+                        <v-select v-model="prestamo.libro" :options="libros" placeholder="Seleccione un libro"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        FECHA DE PRESTAMO
                     </div>
                     <div class="col">
                         <input type="date" v-model="prestamo.prestamo" class="form-control form-control-sm">
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <div class="row row-cols-1 p-2">
-                    <div class="row-col">
-                        <div class="col">
-                            FECHA DEVOLUCION:
-                        </div>
-                        <div class="col">
-                            <input type="date" v-model="prestamo.devolucion" class="form-control form-control-sm">
-                        </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        FECHA DE DEVOLUCION
+                    </div>
+                    <div class="col">
+                        <input type="date" v-model="prestamo.devolucion" class="form-control form-control-sm">
                     </div>
                 </div>
+            </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col text-center">
                     <div class="col">

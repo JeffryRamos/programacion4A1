@@ -5,22 +5,27 @@ var appbuscar_prestamos = new Vue({
         valor:''
     },
     methods:{
-        buscarPrestamos: function(){
-            fetch(`private/Modulos/prestamos/procesos.php?proceso=buscarPrestamo&prestamo=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
+        buscarPrestamo(){
+            fetch(`private/modulos/prestamos/procesos.php?proceso=buscarPrestamo&prestamo=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
                 this.mis_prestamos = resp;
             });
         },
-        modificarPrestamo:function(prestamo){
+        modificarPrestamo(prestamo){
             appprestamos.prestamo = prestamo;
             appprestamos.prestamo.accion = 'modificar';
         },
-        eliminarPrestamo:function(idPrestamo){
-            fetch(`private/Modulos/prestamos/procesos.php?proceso=eliminarPrestamo&prestamo=${idPrestamo}`).then( resp=>resp.json() ).then(resp=>{
-                this.buscarPrestamos();
-            });
+        eliminarPrestamo(idPrestamo){
+            var confirmacion = confirm("¿Esta seguro que desea el registro?");
+            if (confirmacion){
+                alert("El registro se elimino corretamente");
+                fetch(`private/modulos/prestamos/procesos.php?proceso=eliminarPrestamo&prestamo=${idPrestamo}`).then(resp=>resp.json()).then(resp=>{
+                  this.buscarPrestamo();
+              });
+              }
+
         }
     },
-    created:function(){
-        this.buscarPrestamos();
+    created(){
+        this.buscarPrestamo();
     }
 });
