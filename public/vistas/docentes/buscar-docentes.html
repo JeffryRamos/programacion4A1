@@ -1,14 +1,14 @@
 <form method="POST" id="frm-buscar-docentes">
-    <div class="card text-dark bg-hover mb-3" style="max-width: 48rem;">
+    <div class="card text-white bg-info mb-3" style="max-width: 48rem;">
         <div class="car-header">
-            BUSQUEDA DOCENTES
+            BUSQUEDA DE DOCENTES
 
             <button type="button" id="btn-close-buscar-docentes" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="card-body">
-            <table id="tbl-buscar-docentes" class="table-striped table-hover table-bordered table-hover">
+            <table id="tbl-buscar-docentes" class="table-striped bh-info table-bordered table-hover">
                 <thead>
                     <tr>
                         <th colspan="5">
@@ -16,11 +16,10 @@
                         </th>
                     </tr>
                     <tr>
+                        <th>CODIGO</th>
                         <th>NOMBRE</th>
                         <th>DIRECCION</th>
                         <th>TELEFONO</th>
-                        <th>SECCION</th>
-                        <th>CODIGO</th>
                         <th>DUI</th>
                         <th>NIT</th>
                         <th> </th>
@@ -28,15 +27,14 @@
                 </thead>
                 <tbody>
                     <tr v-for="docente in misdocentes" :key="docente.idDocente" v-on:click="modificarDocente(docente)">
+                        <td>{{ docente.codigo }}</td>
                         <td>{{ docente.nombre }}</td>
                         <td>{{ docente.direccion }}</td>
                         <td>{{ docente.telefono }}</td>
-                        <td>{{ docente.seccion }}</td>
-                        <td>{{ docente.codigo }}</td>
                         <td>{{ docente.dui }}</td>
                         <td>{{ docente.nit }}</td>
                         <td>
-                            <input v-on:click="eliminarDocente(docente.idDocente)" type="button" class="btn btn-outline-danger text-dark" value="del">
+                            <input v-on:click="eliminarDocente(docente.idDocente)" type="button" class="btn btn-outline-danger text-white" value="del">
                         </td>
                     </tr>
                 </tbody>

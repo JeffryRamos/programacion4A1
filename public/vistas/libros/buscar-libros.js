@@ -1,7 +1,7 @@
 var appBuscarLibros = new Vue({
     el:'#frm-buscar-libros',
     data:{
-        mislibros:[], 
+        mislibros:[],
         valor:''
     },
     methods:{

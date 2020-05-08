@@ -1,7 +1,7 @@
 <form v-on:submit.prevent="guardarDocente" data-accion="nuevo" data-iddocente='' id="frm-docentes" method="post">
-    <div class="card text-dark bg-hover mb-3" style="max-width: 24rem;">
+    <div class="card text-white bg-info mb-3" style="max-width: 24rem;">
         <div class="card-header">
-            Docentes
+            REGISTRO DE DOCENTES
         
             <button type="button" id="btn-close-docentes" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -10,10 +10,18 @@
         <div class="card-body">
             <div class="row p-2">
                 <div class="col-4">
-                    NOMBRE
+                    CODIGO
                 </div>
                 <div class="col-6">
-                    <input type="text" v-model="docente.nombre" placeholder="AAA AAA" class="form-control">
+                    <input type="text" v-model="docente.codigo" placeholder="AAAA000000" class="form-control">
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    NOMBRE
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="docente.nombre" placeholder="AAAAA AAAAA" class="form-control">
                 </div>
             </div>
             <div class="row p-2">
@@ -26,26 +34,10 @@
             </div>
             <div class="row p-2">
                 <div class="col-4">
-                    TEL
+                    TELEFONO
                 </div>
                 <div class="col-8">
                     <input type="text" v-model="docente.telefono" placeholder="0000-0000" class="form-control">
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-4">
-                    SECCION
-                </div>
-                <div class="col-8">
-                    <input type="text" v-model="docente.seccion" placeholder="A" class="form-control">
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-4">
-                    CODIGO
-                </div>
-                <div class="col-8">
-                    <input type="text" v-model="docente.codigo" placeholder="AAAA000000" class="form-control">
                 </div>
             </div>
             <div class="row p-2">
@@ -66,9 +58,9 @@
             </div>
             <div class="row p-2"> 
                 <div class="col-12 text-center">
-                    <input id="btnguardarDocentes" type="submit" class="btn btn-outline-primary text-dark" value="Guardar">
-                    <input type="reset" class="btn btn-outline-warning text-dark" value="Limpiar">
-                    <input type="button" class="btn btn-outline-success mostrar-buscar-docentes text-dark" data-modulo="docentes" data-form="buscar-docentes" value="Buscar">
+                    <input id="btnguardarDocentes" type="submit" class="btn btn-primary text-white" value="Guardar">
+                    <input type="reset" class="btn btn-warning text-white" value="Limpiar">
+                    <input type="button" class="btn btn-success mostrar-buscar-docentes text-white" data-modulo="docentes" data-form="buscar-docentes" value="Buscar">
                 </div>
             </div>
             <div class="row p-2">

@@ -1,7 +1,7 @@
 <form v-on:submit.prevent="guardarLibro" data-accion="nuevo" data-idlibro='' id="frm-libros" method="post">
-    <div class="card text-dark bg-hover mb-3" style="max-width: 24rem;">
+    <div class="card text-white bg-info mb-3" style="max-width: 24rem;">
         <div class="card-header">
-            Libros 
+            REGISTRO DE LIBROS
         
             <button type="button" id="btn-close-libros" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -13,7 +13,7 @@
                     CODIGO
                 </div>
                 <div class="col-6">
-                    <input type="text" v-model="libro.codigo" placeholder="AAAA000" class="form-control">
+                    <input type="text" v-model="libro.codigo" placeholder="AAA000" class="form-control">
                 </div>
             </div>
             <div class="row p-2">
@@ -21,7 +21,7 @@
                     TITULO
                 </div>
                 <div class="col-8">
-                    <input type="text" v-model="libro.titulo" placeholder="AAAAAA" class="form-control">
+                    <input type="text" v-model="libro.titulo" placeholder="AAAAAAAAAA" class="form-control">
                 </div>
             </div>
             <div class="row p-2">
@@ -37,14 +37,14 @@
                     GENERO
                 </div>
                 <div class="col-8">
-                    <input type="text" v-model="libro.genero" placeholder="AAAAAAAA" class="form-control">
+                    <input type="text" v-model="libro.genero" placeholder="AAAAAAAAAA" class="form-control">
                 </div>
             </div>
             <div class="row p-2"> 
                 <div class="col-12 text-center">
-                    <input id="btnGuardarLibros" type="submit" class="btn btn-outline-primary text-dark" value="Guardar">
-                    <input type="reset" class="btn btn-outline-warning text-dark" value="Limpiar">
-                    <input type="button" class="btn btn-outline-success mostrar-buscar-libros text-dark" data-modulo="libros" data-form="buscar-libros" value="Buscar">
+                    <input id="btnGuardarLibros" type="submit" class="btn btn-primary text-white" value="Guardar">
+                    <input type="reset" class="btn btn-warning text-white" value="Limpiar">
+                    <input type="button" class="btn btn-success mostrar-buscar-libros text-white" data-modulo="libros" data-form="buscar-libros" value="Buscar">
                 </div>
             </div>
             <div class="row p-2">

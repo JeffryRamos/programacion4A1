@@ -1,7 +1,7 @@
 var applibro = new Vue({
     el:'#frm-libros',
     data:{
-        libro:{ 
+        libro:{
             idLibro  : 0,
             accion    : 'nuevo',
             codigo    : '',
