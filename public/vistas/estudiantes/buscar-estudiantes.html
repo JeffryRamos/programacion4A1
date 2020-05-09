@@ -36,7 +36,8 @@
                         <td>{{ estudiante.seccion }}</td>
                         <td>{{ estudiante.email }}</td>
                         <td>
-                            <input v-on:click="eliminarEstudiante(estudiante.idEstudiante)" type="button" class="btn btn-outline-danger text-white" value="del">
+                        <input v-on:click="agregarLibro(libro.idLibro)" type="button" class="btn btn-outline-danger text-white" value="agg">
+                        <input v-on:click="eliminarEstudiante(estudiante.idEstudiante)" type="button" class="btn btn-outline-danger text-white" value="del">
                         </td>
                     </tr>
                 </tbody>

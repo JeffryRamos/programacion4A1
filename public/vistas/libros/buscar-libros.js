@@ -15,9 +15,16 @@ var appBuscarLibros = new Vue({
             applibro.libro.accion = 'modificar';
         },
         eliminarLibro:function(idLibro){
-            fetch(`private/Modulos/libros/procesos.php?proceso=eliminarLibro&libro=${idLibro}`).then(resp=>resp.json()).then(resp=>{
-                this.buscarLibro();
-            });
+            alertify.confirm("REGISTRO DE LIBROS","¿Esta seguro que desea eliminar este registro?",
+                ()=>{
+                    fetch(`private/Modulos/Libros/procesos.php?proceso=eliminarLibro&libro=${idLibro}`).then( resp=>resp.json() ).then(resp=>{
+                        this.buscarLibros();
+                    });
+                    alertify.success('"Registro eliminado correctamente"');
+                },
+                ()=>{
+                    alertify.error('"Eliminacion cancelada"');
+                });
         }
     },
     created:function(){
