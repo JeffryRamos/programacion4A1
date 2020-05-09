@@ -1,7 +1,7 @@
 <form method="POST" id="frm-buscar-docentes">
     <div class="card text-white bg-info mb-3" style="max-width: 48rem;">
         <div class="car-header">
-            BUSQUEDA DE DOCENTES
+            BUSQUEDA DE DOCENTES 
 
             <button type="button" id="btn-close-buscar-docentes" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -22,6 +22,7 @@
                         <th>TELEFONO</th>
                         <th>DUI</th>
                         <th>NIT</th>
+                        <th>EMAIL</th>
                         <th> </th>
                     </tr>
                 </thead>
@@ -33,8 +34,9 @@
                         <td>{{ docente.telefono }}</td>
                         <td>{{ docente.dui }}</td>
                         <td>{{ docente.nit }}</td>
+                        <td>{{ docente.email }}</td>
                         <td>
-                            <input v-on:click="eliminarDocente(docente.idDocente)" type="button" class="btn btn-outline-danger text-white" value="del">
+                        <input v-on:click="eliminarDocente(docente.idDocente)" type="button" class="btn btn-outline-danger text-white" value="del">
                         </td>
                     </tr>
                 </tbody>

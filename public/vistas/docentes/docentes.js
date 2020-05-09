@@ -4,29 +4,39 @@ var appdocente = new Vue({
         docente:{
             idDocente  : 0,
             accion    : 'nuevo',
-            codigo    : '',
+            codigo  : '',
             nombre    : '',
             direccion : '',
             telefono  : '',
-            dui    : '',
+            dui  : '',
             nit  : '',
+            email  : '',
             msg       : ''
         }
     },
     methods:{
-        guardarDocente:function(){
-            fetch(`private/Modulos/docentes/procesos.php?proceso=recibirDatos&docente=${JSON.stringify(this.docente)}`).then( resp=>resp.json() ).then(resp=>{
-                this.docente.msg = resp.msg;
-                this.docente.idDocente = 0;
-                this.docente.codigo = '';
-                this.docente.nombre = '';
-                this.docente.direccion = '';
-                this.docente.telefono = '';
-                this.docente.dui = '';
-                this.docente.nit = '';
-                this.docente.accion = 'nuevo';
-                appBuscarDocentes.buscarDocente();
+        guardarDocente(){
+            fetch(`private/Modulos/Docentes/procesos.php?proceso=recibirDatos&docente=${JSON.stringify(this.docente)}`).then( resp=>resp.json() ).then(resp=>{
+                if( resp.msg.indexOf("correctamente")>=0 ){
+                    alertify.success(resp.msg);
+                } else if(resp.msg.indexOf("Error")>=0){
+                    alertify.error(resp.msg);
+                } else{
+                    alertify.warning(resp.msg);
+                }
             });
+        },
+        limpiarDocente(){
+            this.docente.idDocente=0;
+            this.docente.accion="nuevo";
+            this.docente.codigo="";
+            this.docente.nombre="";
+            this.docente.direccion="";
+            this.docente.telefono="";
+            this.docente.dui="";
+            this.docente.nit="";
+            this.docente.email="";
+            this.docente.msg="";
         }
     }
 });

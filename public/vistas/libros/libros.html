@@ -13,17 +13,17 @@
                     CODIGO
                 </div>
                 <div class="col-6">
-                    <input type="text" v-model="libro.codigo" placeholder="AAA000" class="form-control">
+                    <input type="text" v-model="libro.codigo" placeholder="AAAA000" class="form-control">
                 </div>
             </div>
-            <div class="row p-2">
-                <div class="col-4">
-                    TITULO
-                </div>
-                <div class="col-8">
-                    <input type="text" v-model="libro.titulo" placeholder="AAAAAAAAAA" class="form-control">
-                </div>
+        <div class="row p-2">
+            <div class="col-4">
+                TITULO
             </div>
+            <div class="col-8">
+                <input type="text" v-model="libro.titulo" placeholder="AAAAAAAAAA" class="form-control">
+            </div>
+        </div>
             <div class="row p-2">
                 <div class="col-4">
                     EDICION
@@ -45,12 +45,6 @@
                     <input id="btnGuardarLibros" type="submit" class="btn btn-primary text-white" value="Guardar">
                     <input type="reset" class="btn btn-warning text-white" value="Limpiar">
                     <input type="button" class="btn btn-success mostrar-buscar-libros text-white" data-modulo="libros" data-form="buscar-libros" value="Buscar">
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-12 text-center">
-                    <div class="alert alert-success" role="alert">
-                        {{ libro.msg }}
                     </div>
                 </div>
             </div>

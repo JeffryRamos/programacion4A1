@@ -33,13 +33,14 @@ class docente{
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
-                    INSERT INTO docentes (codigo,nombre,direccion,telefono,dui,nit) VALUES(
+                    INSERT INTO docentes (codigo,nombre,direccion,telefono,dui,nit,email) VALUES(
                         "'. $this->datos['codigo'] .'",
                         "'. $this->datos['nombre'] .'",
                         "'. $this->datos['direccion'] .'",
                         "'. $this->datos['telefono'] .'",
                         "'. $this->datos['dui'] .'",
-                        "'. $this->datos['nit'] .'"
+                        "'. $this->datos['nit'] .'",
+                        "'. $this->datos['email'] .'"
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
@@ -49,20 +50,23 @@ class docente{
                         codigo     = "'. $this->datos['codigo'] .'",
                         nombre     = "'. $this->datos['nombre'] .'",
                         direccion  = "'. $this->datos['direccion'] .'",
-                        telefono   = "'. $this->datos['telefono'] .'",
-                        dui     = "'. $this->datos['dui'] .'",
-                        nit   = "'. $this->datos['nit'] .'"
+                        telefono  = "'. $this->datos['telefono'] .'",
+                        dui  = "'. $this->datos['dui'] .'",
+                        nit  = "'. $this->datos['nit'] .'",
+                        email   = "'. $this->datos['email'] .'"
                     WHERE idDocente = "'. $this->datos['idDocente'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
+            } else{
+                $this->respuesta['msg'] = 'Error no se envio la accion a realizar';
             }
         }
     }
     public function buscarDocente($valor=''){
         $this->db->consultas('
-            select docentes.idDocente, docentes.codigo, docentes.nombre, docentes.direccion, docentes.telefono, docentes.dui, docentes.nit
+            select docentes.idDocente, docentes.codigo, docentes.nombre, docentes.direccion, docentes.telefono, docentes.dui, docentes.nit, docentes.email
             from docentes
-            where docentes.codigo like "%'. $valor .'%" or docentes.nombre like "%'. $valor .'%" or docentes.dui like "%'. $valor .'%" or docentes.nit like "%'. $valor .'%"
+            where docentes.codigo like "%'. $valor .'%" or docentes.nombre like "%'. $valor .'%" or docentes.dui like "%'.$valor.'%" or docentes.nit like "%'.$valor.'%"
         ');
         return $this->respuesta = $this->db->obtener_datos();
     }

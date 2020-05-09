@@ -16,14 +16,14 @@
                     <input type="text" v-model="docente.codigo" placeholder="AAAA000000" class="form-control">
                 </div>
             </div>
-            <div class="row p-2">
-                <div class="col-4">
-                    NOMBRE
-                </div>
-                <div class="col-8">
-                    <input type="text" v-model="docente.nombre" placeholder="AAAAA AAAAA" class="form-control">
-                </div>
+        <div class="row p-2">
+            <div class="col-4">
+                NOMBRE
             </div>
+            <div class="col-8">
+                <input type="text" v-model="docente.nombre" placeholder="AAAAA AAAAA" class="form-control">
+            </div>
+        </div>
             <div class="row p-2">
                 <div class="col-4">
                     DIRECCION
@@ -56,17 +56,19 @@
                     <input type="text" v-model="docente.nit" placeholder="0000-000000-000-0" class="form-control">
                 </div>
             </div>
-            <div class="row p-2"> 
-                <div class="col-12 text-center">
-                    <input id="btnguardarDocentes" type="submit" class="btn btn-primary text-white" value="Guardar">
-                    <input type="reset" class="btn btn-warning text-white" value="Limpiar">
-                    <input type="button" class="btn btn-success mostrar-buscar-docentes text-white" data-modulo="docentes" data-form="buscar-docentes" value="Buscar">
+            <div class="row p-2">
+                <div class="col-4">
+                    EMAIL
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="docente.email" placeholder="AAAAAA@XXXXXX.AAA" class="form-control">
                 </div>
             </div>
-            <div class="row p-2">
+            <div class="row p-2"> 
                 <div class="col-12 text-center">
-                    <div class="alert alert-success" role="alert">
-                        {{ docente.msg }}
+                    <input id="btnGuardarDocentes" type="submit" class="btn btn-primary text-white" value="Guardar">
+                    <input type="reset" class="btn btn-warning text-white" value="Limpiar">
+                    <input type="button" class="btn btn-success mostrar-buscar-docentes text-white" data-modulo="docentes" data-form="buscar-docentes" value="Buscar">
                     </div>
                 </div>
             </div>

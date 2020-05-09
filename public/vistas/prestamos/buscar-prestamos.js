@@ -1,31 +1,26 @@
-var appbuscar_prestamos = new Vue({
-    el: '#frm-buscar-prestamos',
+var appbuscar_matriculas = new Vue({
+    el: '#frm-buscar-matriculas',
     data:{
-        mis_prestamos:[],
+        mis_matriculas:[],
         valor:''
     },
     methods:{
-        buscarPrestamo(){
-            fetch(`private/modulos/prestamos/procesos.php?proceso=buscarPrestamo&prestamo=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
-                this.mis_prestamos = resp;
+        buscarMatriculas(){
+            fetch(`private/Modulos/matriculas/procesos.php?proceso=buscarMatricula&matricula=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
+                this.mis_matriculas = resp;
             });
         },
-        modificarPrestamo(prestamo){
-            appprestamos.prestamo = prestamo;
-            appprestamos.prestamo.accion = 'modificar';
+        modificarMatricula(matricula){
+            appmatriculas.matricula = matricula;
+            appmatriculas.matricula.accion = 'modificar';
         },
-        eliminarPrestamo(idPrestamo){
-            var confirmacion = confirm("¿Esta seguro que desea el registro?");
-            if (confirmacion){
-                alert("El registro se elimino corretamente");
-                fetch(`private/modulos/prestamos/procesos.php?proceso=eliminarPrestamo&prestamo=${idPrestamo}`).then(resp=>resp.json()).then(resp=>{
-                  this.buscarPrestamo();
-              });
-              }
-
+        eliminarMatricula(idMatricula){
+            fetch(`private/Modulos/matriculas/procesos.php?proceso=eliminarMatricula&matricula=${idMatricula}`).then( resp=>resp.json() ).then(resp=>{
+                this.buscarMatriculas();
+            });
         }
     },
     created(){
-        this.buscarPrestamo();
+        this.buscarMatriculas();
     }
 });

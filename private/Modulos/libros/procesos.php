@@ -1,6 +1,6 @@
 <?php 
 include('../../Config/Config.php');
-$libro = new libro($conexion); 
+$libro = new libro($conexion);
 
 $proceso = '';
 if( isset($_GET['proceso']) && strlen($_GET['proceso'])>0 ){
@@ -51,6 +51,8 @@ class libro{
                     WHERE idLibro = "'. $this->datos['idLibro'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
+            } else{
+                $this->respuesta['msg'] = 'Error no se envio la accion a realizar';
             }
         }
     }
@@ -58,7 +60,7 @@ class libro{
         $this->db->consultas('
             select libros.idLibro, libros.codigo, libros.titulo, libros.edicion, libros.genero
             from libros
-            where libros.codigo like "%'. $valor .'%" or libros.titulo like "%'. $valor .'%" or libros.edicion like "%'.$valor.'%"
+            where libros.codigo like "%'. $valor .'%" or libros.titulo like "%'. $valor .'%" or libros.edicion like "%'.$valor.'%" 
         ');
         return $this->respuesta = $this->db->obtener_datos();
     }

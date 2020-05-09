@@ -1,9 +1,9 @@
-<form v-on:submit.prevent="guardarPrestamos" v-on:reset="limpiarPrestamos" id="frm-prestamos">
-    <div class="card text-dark bg-info mb-3" style="max-width: 24rem;">
+<form v-on:submit.prevent="guardarMatriculas" v-on:reset="limpiarMatriculas" id="frm-matriculas">
+    <div class="card text-white bg-dark mb-3" style="max-width: 24rem;">
         <div class="card-header">
-            PRESTAMO DE LIBROS
+            MANTENIMIENTO DE MATRICULAS
 
-            <button type="button" id="btn-close-prestamos" class="close" aria-label="Close">
+            <button type="button" id="btn-close-matriculas" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -11,59 +11,49 @@
             <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        PERSONA
+                        PERIODO:
                     </div>
                     <div class="col">
-                        <v-select v-model="prestamo.persona" :options="personas" placeholder="Seleccione una persona"/>
-                    </div>
-                </div>
-            </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col"> 
-                    <div class="col">
-                        LIBRO
-                    </div>
-                    <div class="col">
-                        <v-select v-model="prestamo.libro" :options="libros" placeholder="Seleccione un libro"/>
+                        <v-select v-model="matricula.periodo" :options="periodos" placeholder="Seleccione un periodo" />
                     </div>
                 </div>
             </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        FECHA DE PRESTAMO
+                        ALUMNO:
                     </div>
                     <div class="col">
-                        <input type="date" v-model="prestamo.prestamo" class="form-control form-control-sm">
+                        <v-select v-model="matricula.alumno" :options="alumnos" placeholder="Seleccione un alumno" />
                     </div>
                 </div>
             </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        FECHA DE DEVOLUCION
+                        FECHA MATRICULA:
                     </div>
                     <div class="col">
-                        <input type="date" v-model="prestamo.devolucion" class="form-control form-control-sm">
+                        <input type="date" v-model="matricula.fecha" class="form-control form-control-sm">
                     </div>
                 </div>
             </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col text-center">
                     <div class="col">
-                        <input id="btnGuardarPrestamos" type="submit" class="btn btn-outline-primary text-dark" value="Guardar">
-                        <input type="reset" class="btn btn-outline-warning text-dark" value="Limpiar">
-                        <input type="button" class="btn btn-outline-success mostrar-buscar-prestamos text-dark" data-modulo="prestamos" data-form="buscar-prestamos" value="Buscar" >
+                        <input id="btnGuardarMatriculas" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
+                        <input type="reset" class="btn btn-outline-warning text-white" value="Limpiar">
+                        <input type="button" class="btn btn-outline-success mostrar-buscar-matriculas text-white" data-modulo="matriculas" data-form="buscar-matriculas" value="Buscar" >
                 </div>
             </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col text-center">
                     <div class="col">
-                        <div class="alert alert-success" role="alert"></div>
+                        <div class="alert alert-success" role="alert">{{ matricula.msg }}</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </form>
-<script src="public/vistas/prestamos/prestamos.js"></script>
+<script src="public/vistas/matriculas/matriculas.js"></script>

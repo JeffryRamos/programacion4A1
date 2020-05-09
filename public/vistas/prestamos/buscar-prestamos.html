@@ -1,38 +1,34 @@
-<form method="post" id="frm-buscar-prestamos">
-    <div class="card text-dark bg-info mb-3" style="max-width: 48rem;">
+<form method="post" id="frm-buscar-matriculas">
+    <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
         <div class="card-header">
-            BUSCAR PRESTAMOS
+            BUSQUEDA DE MATRICULA
 
-            <button type="button" id="btn-close-buscar-prestamos" class="close" aria-label="Close">
+            <button type="button" id="btn-close-buscar-matriculas" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="card-body">
-            <table id="tbl-buscar-prestamos" class="table-striped bh-info table-bordered table-info">
+            <table id="tbl-buscar-matriculas" class="table-striped table-dark table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th colspan="5">
-                            <input type="text" v-model="valor" v-on:keyup="buscarPrestamo" placeholder="todo" class="form-control">
+                        <th colspan="3">
+                            <input type="text" v-model="valor" v-on:keyup="buscarMatriculas" placeholder="codigo, nombre, dui o nit" class="form-control">
                         </th>
                     </tr>
                     <tr>
-                        <th>ESTUDIANTE</th>
-                        <th>LIBRO</th> 
-                        <th>FECHA DE PRESTAMO</th> 
-                        <th>FECHA DE DEVOLUCION</th>
+                        <th>PERIODO</th>
+                        <th>ALUMNNO</th> 
+                        <th>FECHA MATRICULA</th>
                         <th> </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="mi_prestamo in mis_prestamos" :key="mi_prestamo.idPrestamo" v-on:click="modificarPrestamo(mi_prestamo)" >
-                        <td>{{ mi_prestamo.estudiante.label }}</td>
-                        <td>{{ mi_prestamo.libro.label }}</td>
-                        <td>{{ mi_prestamo.f }}</td>
-                        <td>{{ mi_prestamo.d }}</td>
-                        <td>{{ mi_prestamo.v }}</td>
-
+                    <tr v-for="mi_matricula in mis_matriculas" :key="mi_matricula.idMatricula" v-on:click="modificarMatricula(mi_matricula)" >
+                        <td>{{ mi_matricula.periodo.label }}</td>
+                        <td>{{ mi_matricula.alumno.label }}</td>
+                        <td>{{ mi_matricula.f }}</td>
                         <td>
-                            <input v-on:click="eliminarPrestamo(mi_prestamo.idPrestamo)" type="button" class="btn btn-outline-danger text-hover" value="del">
+                            <input v-on:click="eliminarMatricula(mi_matricula.idMatricula)" type="button" class="btn btn-outline-danger text-white" value="del">
                         </td>
                     </tr>
                 </tbody>
@@ -40,4 +36,4 @@
         </div>
     </div>
 </form>
-<script src="public/vistas/prestamos/buscar-prestamos.js"></script>
+<script src="public/vistas/matriculas/buscar-matriculas.js"></script>

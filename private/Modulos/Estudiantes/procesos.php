@@ -57,6 +57,8 @@ class estudiante{
                     WHERE idEstudiante = "'. $this->datos['idEstudiante'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
+            } else{
+                $this->respuesta['msg'] = 'Error no se envio la accion a realizar';
             }
         }
     }

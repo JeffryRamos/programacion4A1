@@ -1,43 +1,41 @@
 Vue.component('v-select', VueSelect.VueSelect);
 
-var appprestamos = new Vue({
-    el:'#frm-prestamos',
+var appmatriculas = new Vue({
+    el:'#frm-matriculas',
     data:{
-        prestamo:{
-            idPrestamo : 0,
+        matricula:{
+            idMatricula : 0,
             accion    : 'nuevo',
-            estudiante   : {
-                idEstudiante : 0,
-                estudiante   : ''
+            periodo   : {
+                idPeriodo : 0,
+                periodo   : ''
             },
-            libro    : {
-                idLibro : 0,
-                libro   : ''
+            alumno    : {
+                idAlumno : 0,
+                alumno   : ''
             },
-            prestamo  : '',
-            devolucion : '',
-            valor: '',
+            fecha     : '',
             msg       : ''
         },
-        estudiantes : {},
-        libros  : {}
+        periodos : {},
+        alumnos  : {}
     },
     methods:{
-        guardarPrestamos(){
-             fetch(`private/modulos/prestamos/procesos.php?proceso=recibirDatos&prestamo=${JSON.stringify(this.prestamo)}`).then( resp=>resp.json() ).then(resp=>{
-                this.prestamo.msg = resp.msg;
-            }); 
+        guardarMatriculas(){
+            fetch(`private/Modulos/matriculas/procesos.php?proceso=recibirDatos&matricula=${JSON.stringify(this.matricula)}`).then( resp=>resp.json() ).then(resp=>{
+                this.matricula.msg = resp.msg;
+            });
         },
-        limpiarPrestamos(){
-            this.prestamo.idPrestamo=0;
-            this.prestamo.accion="nuevo";
-            this.prestamo.msg="";
+        limpiarMatriculas(){
+            this.matricula.idMatricula=0;
+            this.matricula.accion="nuevo";
+            this.matricula.msg="";
         }
     },
     created(){
-         fetch(`private/modulos/prestamos/procesos.php?proceso=traer_estudiante_libro&prestamo=''`).then( resp=>resp.json() ).then(resp=>{
-           this.estudiantes = resp.estudiantes;
-            this.libros = resp.libros; 
+        fetch(`private/Modulos/matriculas/procesos.php?proceso=traer_periodos_alumnos&matricula=''`).then( resp=>resp.json() ).then(resp=>{
+            this.periodos = resp.periodos;
+            this.alumnos = resp.alumnos;
         });
     }
 });
