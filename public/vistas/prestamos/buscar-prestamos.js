@@ -1,26 +1,26 @@
-var appbuscar_matriculas = new Vue({
-    el: '#frm-buscar-matriculas',
+var appbuscar_prestamos = new Vue({
+    el: '#frm-buscar-prestamos',
     data:{
-        mis_matriculas:[],
+        mis_prestamos:[],
         valor:''
     },
     methods:{
-        buscarMatriculas(){
-            fetch(`private/Modulos/matriculas/procesos.php?proceso=buscarMatricula&matricula=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
-                this.mis_matriculas = resp;
+        buscarPrestamos(){
+            fetch(`private/Modulos/prestamos/procesos.php?proceso=buscarPrestamo&prestamo=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
+                this.mis_prestamos = resp;
             });
         },
-        modificarMatricula(matricula){
-            appmatriculas.matricula = matricula;
-            appmatriculas.matricula.accion = 'modificar';
+        modificarPrestamo(prestamo){
+            appprestamos.prestamo = prestamo;
+            appprestamos.prestamo.accion = 'modificar';
         },
-        eliminarMatricula(idMatricula){
-            fetch(`private/Modulos/matriculas/procesos.php?proceso=eliminarMatricula&matricula=${idMatricula}`).then( resp=>resp.json() ).then(resp=>{
-                this.buscarMatriculas();
+        eliminarPrestamo(idPrestamo){
+            fetch(`private/Modulos/prestamos/procesos.php?proceso=eliminarPrestamo&prestamo=${idPrestamo}`).then( resp=>resp.json() ).then(resp=>{
+                this.buscarPrestamos();
             });
         }
     },
     created(){
-        this.buscarMatriculas();
+        this.buscarPrestamos();
     }
 });
