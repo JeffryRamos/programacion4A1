@@ -1,10 +1,10 @@
 Vue.component('v-select', VueSelect.VueSelect);
 
-var appprestamos = new Vue({
-    el:'#frm-prestamos',
+var appprestamose = new Vue({
+    el:'#frm-prestamose',
     data:{
-        prestamo:{
-            idPrestamo : 0,
+        prestamoe:{
+            idPrestamoe : 0,
             accion    : 'nuevo',
             estudiante   : {
                 idEstudiante : 0,
@@ -22,19 +22,19 @@ var appprestamos = new Vue({
         libros  : {}
     },
     methods:{
-        guardarPrestamos(){
-            fetch(`private/Modulos/prestamos/procesos.php?proceso=recibirDatos&prestamo=${JSON.stringify(this.prestamo)}`).then( resp=>resp.json() ).then(resp=>{
-                this.prestamo.msg = resp.msg;
+        guardarPrestamose(){
+            fetch(`private/Modulos/prestamose/procesos.php?proceso=recibirDatos&prestamoe=${JSON.stringify(this.prestamoe)}`).then( resp=>resp.json() ).then(resp=>{
+                this.prestamoe.msg = resp.msg;
             });
         },
-        limpiarPrestamos(){
-            this.prestamo.idPrestamo=0;
-            this.prestamo.accion="nuevo";
-            this.prestamo.msg="";
+        limpiarPrestamose(){
+            this.prestamoe.idPrestamoe=0;
+            this.prestamoe.accion="nuevo";
+            this.prestamoe.msg="";
         }
     },
     created(){
-        fetch(`private/Modulos/prestamos/procesos.php?proceso=traer_estudiantes_libros&prestamo=''`).then( resp=>resp.json() ).then(resp=>{
+        fetch(`private/Modulos/prestamose/procesos.php?proceso=traer_estudiante_libro&prestamoe=''`).then( resp=>resp.json() ).then(resp=>{
             this.estudiantes = resp.estudiantes;
             this.libros = resp.libros;
         });

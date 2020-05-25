@@ -1,10 +1,10 @@
-var applibro = new Vue({
+var applibros = new Vue({
     el:'#frm-libros',
     data:{
         libro:{
-            idLibro  : 0,
+            idLibro : 0,
             accion    : 'nuevo',
-            codigo  : '',
+            codigo    : '',
             titulo    : '',
             edicion : '',
             genero  : '',
@@ -12,9 +12,9 @@ var applibro = new Vue({
         }
     },
     methods:{
-        guardarLibro(){
-            fetch(`private/Modulos/Libros/procesos.php?proceso=recibirDatos&libro=${JSON.stringify(this.libro)}`).then( resp=>resp.json() ).then(resp=>{
-                if( resp.msg.indexOf("correctamente")>=0 ){
+        guardarLibros(){
+            fetch(`private/Modulos/libros/procesos.php?proceso=recibirDatos&libro=${JSON.stringify(this.libro)}`).then( resp=>resp.json() ).then(resp=>{
+                if( resp.msg.indexOf("Correctamente")>=0 ){
                     alertify.success(resp.msg);
                 } else if(resp.msg.indexOf("Error")>=0){
                     alertify.error(resp.msg);
@@ -23,7 +23,7 @@ var applibro = new Vue({
                 }
             });
         },
-        limpiarLibro(){
+        limpiarLibros(){
             this.libro.idLibro=0;
             this.libro.accion="nuevo";
             this.libro.codigo="";

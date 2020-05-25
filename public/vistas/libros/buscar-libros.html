@@ -1,7 +1,7 @@
-<form method="POST" id="frm-buscar-libros">
+<form method="post" id="frm-buscar-libros">
     <div class="card text-white bg-info mb-3" style="max-width: 48rem;">
-        <div class="car-header">
-            BUSQUEDA DE LIBROS 
+        <div class="card-header"><img src=public/css/lupa.png>
+            BUSQUEDA DE LIBROS
 
             <button type="button" id="btn-close-buscar-libros" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th colspan="5">
-                            <input type="text" v-model="valor" v-on:keyup="buscarLibro" placeholder="Codigo, Titulo o Edicion" class="form-control">
+                            <input type="text" v-model="valor" v-on:keyup="buscarLibros" placeholder="Codigo, Titulo o Edicion" class="form-control">
                         </th>
                     </tr>
                     <tr>
@@ -24,13 +24,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="libro in mislibros" :key="libro.idLibro" v-on:click="modificarLibro(libro)">
-                        <td>{{ libro.codigo }}</td>
-                        <td>{{ libro.titulo }}</td>
-                        <td>{{ libro.edicion }}</td>
-                        <td>{{ libro.genero }}</td>
+                    <tr v-for="mi_libro in mis_libros" :key="mi_libro.idLibro" v-on:click="modificarLibro(mi_libro)" >
+                        <td>{{ mi_libro.codigo }}</td>
+                        <td>{{ mi_libro.titulo }}</td>
+                        <td>{{ mi_libro.edicion }}</td>
+                        <td>{{ mi_libro.genero }}</td>
                         <td>
-                        <input v-on:click="eliminarLibro(libro.idLibro)" type="button" class="btn btn-outline-danger text-white" value="del">
+                            <input v-on:click="eliminarLibro(mi_libro.idLibro)" type="button" class="btn btn-outline-danger text-white" value="del">
                         </td>
                     </tr>
                 </tbody>

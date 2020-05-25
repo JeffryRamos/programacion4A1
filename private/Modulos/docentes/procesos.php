@@ -21,11 +21,14 @@ class docente{
         $this->validar_datos();
     }
     private function validar_datos(){
-        if( empty($this->datos['codigo']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el codigo del docente';
+        if( empty(trim($this->datos['codigo'])) ){
+            $this->respuesta['msg'] = 'Por favor ingrese el codigo del docente';
         }
-        if( empty($this->datos['nombre']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el nombre del docente';
+        if( empty(trim($this->datos['nombre'])) ){
+            $this->respuesta['msg'] = 'Por favor ingrese el nombre del docente';
+        }
+        if( empty( trim($this->datos['direccion'])) ){
+            $this->respuesta['msg'] = 'Por favor ingrese la direccion del docente';
         }
         $this->almacenar_docente();
     }
@@ -46,37 +49,38 @@ class docente{
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
-                   UPDATE docentes SET
+                    UPDATE docentes SET
                         codigo     = "'. $this->datos['codigo'] .'",
                         nombre     = "'. $this->datos['nombre'] .'",
                         direccion  = "'. $this->datos['direccion'] .'",
-                        telefono  = "'. $this->datos['telefono'] .'",
-                        dui  = "'. $this->datos['dui'] .'",
-                        nit  = "'. $this->datos['nit'] .'",
+                        telefono   = "'. $this->datos['telefono'] .'",
+                        dui   = "'. $this->datos['dui'] .'",
+                        nit   = "'. $this->datos['nit'] .'",
                         email   = "'. $this->datos['email'] .'"
                     WHERE idDocente = "'. $this->datos['idDocente'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             } else{
-                $this->respuesta['msg'] = 'Error no se envio la accion a realizar';
+                $this->respuesta['msg'] = 'Error, no se envio la accion a realizar';
             }
         }
     }
-    public function buscarDocente($valor=''){
+    public function buscarDocente($valor = ''){
         $this->db->consultas('
             select docentes.idDocente, docentes.codigo, docentes.nombre, docentes.direccion, docentes.telefono, docentes.dui, docentes.nit, docentes.email
             from docentes
-            where docentes.codigo like "%'. $valor .'%" or docentes.nombre like "%'. $valor .'%" or docentes.dui like "%'.$valor.'%" or docentes.nit like "%'.$valor.'%"
+            where docentes.codigo like "%'. $valor .'%" or docentes.nombre like "%'. $valor .'%" or docentes.dui like "%'. $valor .'%" or docentes.nit like "%'. $valor .'%"
+
         ');
-        return $this->respuesta = $this->db->obtener_datos();
+        return $this->respuesta = $this->db->obtener_data();
     }
-    public function eliminarDocente($idDocente=''){
+    public function eliminarDocente($idDocente = 0){
         $this->db->consultas('
-            delete docentes
-            from docentes
-            where docentes.idDocente = "'.$idDocente.'"
+            DELETE docentes
+            FROM docentes
+            WHERE docentes.idDocente="'.$idDocente.'"
         ');
-        $this->respuesta['msg'] = 'Registro eliminado correctamente';
+        return $this->respuesta['msg'] = 'Registro eliminado correctamente';;
     }
 }
 ?>

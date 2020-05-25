@@ -1,0 +1,69 @@
+<form v-on:submit.prevent="guardarPrestamose" v-on:reset="limpiarPrestamose" id="frm-prestamose">
+    <div class="card text-white bg-info mb-3" style="max-width: 24rem;">
+        <div class="card-header"><img src=public/css/libro.png>
+            REGISTRO DE PRESTAMOS
+
+            <button type="button" id="btn-close-prestamose" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="row row-cols-1 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        ESTUDIANTE
+                    </div>
+                    <div class="col">
+                        <v-select v-model="prestamoe.estudiante" :options="estudiantes" placeholder="Seleccione un estudiante"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        LIBRO
+                    </div>
+                    <div class="col">
+                        <v-select v-model="prestamoe.libro" :options="libros" placeholder="Seleccione un libro"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        FECHA DE PRESTAMO
+                    </div>
+                    <div class="col">
+                        <input type="date" v-model="prestamoe.fechaPrestamo" class="form-control form-control-sm">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        FECHA DE DEVOLUCION
+                    </div>
+                    <div class="col">
+                        <input type="date" v-model="prestamoe.fechaDevolucion" class="form-control form-control-sm">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col text-center">
+                    <div class="col">
+                        <input id="btnGuardarPrestamose" type="submit" class="btn btn-primary text-white" value="Guardar">
+                        <input type="reset" class="btn btn-warning text-white" value="Limpiar">
+                        <input type="button" class="btn btn-success mostrar-buscar-prestamose text-white" data-modulo="prestamose" data-form="buscar-prestamose" value="Buscar" >
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col text-center">
+                    <div class="col">
+                        <div class="alert alert-success" role="alert">{{ prestamoe.msg }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/prestamose/prestamose.js"></script>

@@ -1,33 +1,33 @@
-var appBuscarEstudiantes = new Vue({
-    el:'#frm-buscar-estudiantes',
+var appbuscar_estudiantes = new Vue({
+    el: '#frm-buscar-estudiantes',
     data:{
-        misestudiantes:[],
+        mis_estudiantes:[],
         valor:''
     },
     methods:{
-        buscarEstudiante:function(){
-            fetch(`private/Modulos/estudiantes/procesos.php?proceso=buscarEstudiante&estudiante=${this.valor}`).then(resp=>resp.json()).then(resp=>{
-                this.misestudiantes = resp;
+        buscarEstudiantes(){
+            fetch(`private/Modulos/estudiantes/procesos.php?proceso=buscarEstudiante&estudiante=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
+                this.mis_estudiantes = resp;
             });
         },
-        modificarEstudiante:function(estudiante){
-            appestudiante.estudiante = estudiante;
-            appestudiante.estudiante.accion = 'modificar';
+        modificarEstudiante(estudiante){
+            appestudiantes.estudiante = estudiante;
+            appestudiantes.estudiante.accion = 'modificar';
         },
-        eliminarEstudiante:function(idEstudiante){
-            alertify.confirm("REGISTRO DE ESTUDIANTES","¿Esta seguro que desea eliminar este registro?",
+        eliminarEstudiante(idEstudiante){
+            alertify.confirm("Registro De Estudiantes","¿Esta seguro que desea eliminar el registro?",
                 ()=>{
-                    fetch(`private/Modulos/Estudiantes/procesos.php?proceso=eliminarEstudiante&estudiante=${idEstudiante}`).then( resp=>resp.json() ).then(resp=>{
+                    fetch(`private/Modulos/estudiantes/procesos.php?proceso=eliminarEstudiante&estudiante=${idEstudiante}`).then( resp=>resp.json() ).then(resp=>{
                         this.buscarEstudiantes();
                     });
-                    alertify.success('"Registro eliminado correctamente"');
+                    alertify.success('Registro eliminado correctamente');
                 },
                 ()=>{
-                    alertify.error('"Eliminacion cancelada"');
+                    alertify.error('Eliminacion cancelada');
                 });
         }
     },
-    created:function(){
-        this.buscarEstudiante();
+    created(){
+        this.buscarEstudiantes();
     }
 });

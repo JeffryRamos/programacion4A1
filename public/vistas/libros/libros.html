@@ -1,8 +1,8 @@
-<form v-on:submit.prevent="guardarLibro" data-accion="nuevo" data-idlibro='' id="frm-libros" method="post">
+<form method="post" id="frm-libros" v-on:submit.prevent="guardarLibros" v-on:reset.prevent="limpiarLibros">
     <div class="card text-white bg-info mb-3" style="max-width: 24rem;">
-        <div class="card-header">
+        <div class="card-header"><img src=public/css/libro.png>
             REGISTRO DE LIBROS
-        
+
             <button type="button" id="btn-close-libros" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -13,7 +13,7 @@
                     CODIGO
                 </div>
                 <div class="col-6">
-                    <input type="text" v-model="libro.codigo" placeholder="AAAA000" class="form-control">
+                    <input type="text" required v-model="libro.codigo" placeholder="AAAA000" class="form-control">
                 </div>
             </div>
         <div class="row p-2">
@@ -21,7 +21,7 @@
                 TITULO
             </div>
             <div class="col-8">
-                <input type="text" v-model="libro.titulo" placeholder="AAAAAAAAAA" class="form-control">
+                <input type="text" required v-model="libro.titulo" placeholder="AAAAAAAAAA" class="form-control">
             </div>
         </div>
             <div class="row p-2">
@@ -29,7 +29,7 @@
                     EDICION
                 </div>
                 <div class="col-8">
-                    <input type="text" v-model="libro.edicion" placeholder="0000" class="form-control">
+                    <input type="text" required v-model="libro.edicion" placeholder="0000" class="form-control">
                 </div>
             </div>
             <div class="row p-2">
@@ -37,14 +37,15 @@
                     GENERO
                 </div>
                 <div class="col-8">
-                    <input type="text" v-model="libro.genero" placeholder="AAAAAAAAAA" class="form-control">
+                    <input type="text" required v-model="libro.genero" placeholder="AAAAAAAAAA" class="form-control">
                 </div>
             </div>
-            <div class="row p-2"> 
-                <div class="col-12 text-center">
-                    <input id="btnGuardarLibros" type="submit" class="btn btn-primary text-white" value="Guardar">
-                    <input type="reset" class="btn btn-warning text-white" value="Limpiar">
-                    <input type="button" class="btn btn-success mostrar-buscar-libros text-white" data-modulo="libros" data-form="buscar-libros" value="Buscar">
+            <div class="row row-cols-1 p-2">
+                <div class="row-col text-center">
+                    <div class="col">
+                        <input id="btnGuardarLibros" type="submit" class="btn btn-primary text-white" value="Guardar">
+                        <input type="reset" class="btn btn-warning text-white" value="Limpiar">
+                        <input type="button" class="btn btn-success mostrar-buscar-libros text-white" data-modulo="libros" data-form="buscar-libros" value="Buscar" data-modulo="buscar-libros" >
                     </div>
                 </div>
             </div>

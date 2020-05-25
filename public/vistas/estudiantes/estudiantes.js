@@ -1,10 +1,10 @@
-var appestudiante = new Vue({
+var appestudiantes = new Vue({
     el:'#frm-estudiantes',
     data:{
         estudiante:{
-            idEstudiante  : 0,
+            idEstudiante : 0,
             accion    : 'nuevo',
-            nie  : '',
+            nie    : '',
             nombre    : '',
             direccion : '',
             telefono  : '',
@@ -15,9 +15,9 @@ var appestudiante = new Vue({
         }
     },
     methods:{
-        guardarEstudiante(){
-            fetch(`private/Modulos/Estudiantes/procesos.php?proceso=recibirDatos&estudiante=${JSON.stringify(this.estudiante)}`).then( resp=>resp.json() ).then(resp=>{
-                if( resp.msg.indexOf("correctamente")>=0 ){
+        guardarEstudiantes(){
+            fetch(`private/Modulos/estudiantes/procesos.php?proceso=recibirDatos&estudiante=${JSON.stringify(this.estudiante)}`).then( resp=>resp.json() ).then(resp=>{
+                if( resp.msg.indexOf("Correctamente")>=0 ){
                     alertify.success(resp.msg);
                 } else if(resp.msg.indexOf("Error")>=0){
                     alertify.error(resp.msg);
@@ -26,7 +26,7 @@ var appestudiante = new Vue({
                 }
             });
         },
-        limpiarEstudiante(){
+        limpiarEstudiantes(){
             this.estudiante.idEstudiante=0;
             this.estudiante.accion="nuevo";
             this.estudiante.nie="";

@@ -1,33 +1,33 @@
-var appBuscarLibros = new Vue({
-    el:'#frm-buscar-libros',
+var appbuscar_libros = new Vue({
+    el: '#frm-buscar-libros',
     data:{
-        mislibros:[],
+        mis_libros:[],
         valor:''
     },
     methods:{
-        buscarLibro:function(){
-            fetch(`private/Modulos/libros/procesos.php?proceso=buscarLibro&libro=${this.valor}`).then(resp=>resp.json()).then(resp=>{
-                this.mislibros = resp;
+        buscarLibros(){
+            fetch(`private/Modulos/libros/procesos.php?proceso=buscarLibro&libro=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
+                this.mis_libros = resp;
             });
         },
-        modificarLibro:function(libro){
-            applibro.libro = libro;
-            applibro.libro.accion = 'modificar';
+        modificarLibro(libro){
+            applibros.libro = libro;
+            applibros.libro.accion = 'modificar';
         },
-        eliminarLibro:function(idLibro){
-            alertify.confirm("REGISTRO DE LIBROS","¿Esta seguro que desea eliminar este registro?",
+        eliminarLibro(idLibro){
+            alertify.confirm("Registro De Libros","¿Esta seguro que desea eliminar el registro?",
                 ()=>{
-                    fetch(`private/Modulos/Libros/procesos.php?proceso=eliminarLibro&libro=${idLibro}`).then( resp=>resp.json() ).then(resp=>{
+                    fetch(`private/Modulos/libros/procesos.php?proceso=eliminarLibro&libro=${idLibro}`).then( resp=>resp.json() ).then(resp=>{
                         this.buscarLibros();
                     });
-                    alertify.success('"Registro eliminado correctamente"');
+                    alertify.success('Registro eliminado correctamente');
                 },
                 ()=>{
-                    alertify.error('"Eliminacion cancelada"');
+                    alertify.error('Eliminacion cancelada');
                 });
         }
     },
-    created:function(){
-        this.buscarLibro();
+    created(){
+        this.buscarLibros();
     }
 });

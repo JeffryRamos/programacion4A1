@@ -8,10 +8,10 @@
 }
 
 .bg-light {
-  background-image: url(book.jpg);
+  background-image: url(biblioteca.gif);
   background-position: center;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: auto;
   
 }
 

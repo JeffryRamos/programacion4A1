@@ -1,7 +1,7 @@
-<form method="POST" id="frm-buscar-docentes">
+<form method="post" id="frm-buscar-docentes">
     <div class="card text-white bg-info mb-3" style="max-width: 48rem;">
-        <div class="car-header">
-            BUSQUEDA DE DOCENTES 
+        <div class="card-header"><img src=public/css/lupa.png>
+            BUSQUEDA DE DOCENTES
 
             <button type="button" id="btn-close-buscar-docentes" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th colspan="5">
-                            <input type="text" v-model="valor" v-on:keyup="buscarDocente" placeholder="Codigo, Nombre, Dui o Nit" class="form-control">
+                            <input type="text" v-model="valor" v-on:keyup="buscarDocentes" placeholder="Codigo, Nombre, Dui o Nit" class="form-control">
                         </th>
                     </tr>
                     <tr>
@@ -22,21 +22,21 @@
                         <th>TELEFONO</th>
                         <th>DUI</th>
                         <th>NIT</th>
-                        <th>EMAIL</th>
+                        <th>EMAIL</th> 
                         <th> </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="docente in misdocentes" :key="docente.idDocente" v-on:click="modificarDocente(docente)">
-                        <td>{{ docente.codigo }}</td>
-                        <td>{{ docente.nombre }}</td>
-                        <td>{{ docente.direccion }}</td>
-                        <td>{{ docente.telefono }}</td>
-                        <td>{{ docente.dui }}</td>
-                        <td>{{ docente.nit }}</td>
-                        <td>{{ docente.email }}</td>
+                    <tr v-for="mi_docente in mis_docentes" :key="mi_docente.idDocente" v-on:click="modificarDocente(mi_docente)" >
+                        <td>{{ mi_docente.codigo }}</td>
+                        <td>{{ mi_docente.nombre }}</td>
+                        <td>{{ mi_docente.direccion }}</td>
+                        <td>{{ mi_docente.telefono }}</td>
+                        <td>{{ mi_docente.dui }}</td>
+                        <td>{{ mi_docente.nit }}</td>
+                        <td>{{ mi_docente.email }}</td>
                         <td>
-                        <input v-on:click="eliminarDocente(docente.idDocente)" type="button" class="btn btn-outline-danger text-white" value="del">
+                            <input v-on:click="eliminarDocente(mi_docente.idDocente)" type="button" class="btn btn-outline-danger text-white" value="del">
                         </td>
                     </tr>
                 </tbody>

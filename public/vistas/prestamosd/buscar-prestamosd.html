@@ -1,0 +1,41 @@
+<form method="post" id="frm-buscar-prestamosd">
+    <div class="card text-white bg-info mb-3" style="max-width: 48rem;">
+        <div class="card-header"><img src=public/css/lupa.png>
+            BUSQUEDA DE PRESTAMOS
+
+            <button type="button" id="btn-close-buscar-prestamosd" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <table id="tbl-buscar-prestamosd" class="table-striped bh-info table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="4">
+                            <input type="text" v-model="valor" v-on:keyup="buscarPrestamosd" placeholder="Todo" class="form-control">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>DOCENTE</th>
+                        <th>LIBRO</th> 
+                        <th>FECHA DE PRESTAMO</th>
+                        <th>FECHA DE DEVOLUCION</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_prestamod in mis_prestamosd" :key="mi_prestamod.idPrestamod" v-on:click="modificarPrestamod(mi_prestamod)" >
+                        <td>{{ mi_prestamod.docente.label }}</td>
+                        <td>{{ mi_prestamod.libro.label }}</td>
+                        <td>{{ mi_prestamod.f }}</td>
+                        <td>{{ mi_prestamod.d }}</td>
+                        <td>
+                            <input v-on:click="eliminarPrestamod(mi_prestamod.idPrestamod)" type="button" class="btn btn-outline-danger text-white" value="del">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/prestamosd/buscar-prestamosd.js"></script>
