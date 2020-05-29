@@ -2,7 +2,41 @@
 .modulos{ 
     position: absolute;
 }
+.img-background{
+  background: url(../img/597566.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+.modal-content{
+  background-color: midnightblue;
+  opacity: .85;
+  padding: 0 20px;
+  
+  box-shadow: 0px 0px 5px #848484;
+}
+.main-section{
+  margin: 0 auto;
+  margin-top: 25%;
+  padding: 0;
+}
+.margin-title{
+  margin-top: 10px;
+}
+a{
+  margin-bottom: 15px;
+}
+.user-img{
+  margin-top: -50px;
+  margin-bottom: 35px;
+}
 
+.user-img img{
+  width: 100px;
+  height: 100px;
+}
+.btn{
+  width: 60%;
+  margin: 5px 0 25px;
+}
 .v-select{
     background: white !important;
 }
