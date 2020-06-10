@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Biblioteca Digital</title>
+    <link rel="shortcut icon" href="imagenes/logo.jpg"/>
+    <link rel="apple-touch-icon" href="imagenes/logo.jpg">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/estilos.css">
     <link rel="stylesheet" href="public/alertifyjs/css/alertify.min.css">
@@ -15,31 +17,18 @@
 
     <!-- Sidebar -->
     <div class="bg-white border-dark" id="sidebar-wrapper">
-      <div class="text-white sidebar-heading bg-info"><img src=public/css/biblioo.png>Biblioteca Digital</div>
+      <div class="text-white sidebar-heading bg-info"><img src="imagenes/logooo.png"/> Biblioteca Digital</div>
       <div class="list-group list-group-flush">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active text-info" href="#">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mostrar-estudiantes text-info" data-modulo="estudiantes" data-form="estudiantes" href="#">Estudiantes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mostrar-docentes text-info" data-modulo="docentes" data-form="docentes" href="#">Docentes</a>
+            <a class="nav-link active text-info" href="principal.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link mostrar-libros text-info" data-modulo="libros" data-form="libros" href="#">Libros</a>
           </li>
-          <div class="dropdown">
-            <button class="btn dropdown-toggle text-info" type="button" id="prestamos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Prestamos
-            </button>
-            <div class="dropdown-menu" aria-labelledby="prestamos">
-              <a class="nav-link mostrar-prestamose text-info" data-modulo="prestamose" data-form="prestamose" href="#">Prestamos de Estudiantes</a>
-              <a class="nav-link mostrar-prestamosd text-info" data-modulo="prestamosd" data-form="prestamosd" href="#">Prestamos de Docentes</a>
-             
-            </div>
-          </div>
+          <li class="nav-item">
+            <a class="nav-link mostrar-prestamose text-info" data-modulo="prestamose" data-form="prestamose" href="#">Prestamos</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link mostrar-chat text-info" data-modulo="chat" data-form="chat" href="#">Chat</a>
           </li>
@@ -53,8 +42,6 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-      <button class="btn btn-outline-info"
-        id="menu-toggle">Menu</button>
         <div class="container">
           <div id="modulos">
             <div class="modulos" id="vistas-estudiantes"></div>
