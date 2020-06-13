@@ -24,7 +24,7 @@ class prestamo{
         if( empty($this->datos['usuario']['id']) ){
             $this->respuesta['msg'] = 'Por favor ingrese el usuario del prestamo';
         }
-        if( empty($this->datos['libro']['id']) ){
+        if( empty($this->datos['titulo']['id']) ){
             $this->respuesta['msg'] = 'Por favor ingrese el libro';
         }
         if( empty($this->datos['fechaPrestamo']) ){
@@ -38,7 +38,7 @@ class prestamo{
                 $this->db->consultas('
                     INSERT INTO prestamos (idRegistro,idLibro,fechaPrestamo,fechaDevolucion) VALUES(
                         "'. $this->datos['usuario']['id'] .'",
-                        "'. $this->datos['libro']['id'] .'",
+                        "'. $this->datos['titulo']['id'] .'",
                         "'. $this->datos['fechaPrestamo'] .'",
                         "'. $this->datos['fechaDevolucion'] .'"
                     )
@@ -48,7 +48,7 @@ class prestamo{
                 $this->db->consultas('
                     UPDATE prestamos SET
                         idRegistro     = "'. $this->datos['usuario']['id'] .'",
-                        idLibro      = "'. $this->datos['libro']['id'] .'",
+                        idLibro      = "'. $this->datos['titulo']['id'] .'",
                         fechaPrestamo         = "'. $this->datos['fechaPrestamo'] .'",
                         fechaDevolucion         = "'. $this->datos['fechaDevolucion'] .'"
                     WHERE idPrestamo = "'. $this->datos['idPrestamo'] .'"
@@ -104,7 +104,7 @@ class prestamo{
         ');
         $registros = $this->db->obtener_data();
         $this->db->consultas('
-            select libros.libro AS label, libros.idLibro AS id
+            select libros.titulo AS label, libros.idLibro AS id
             from libros
         ');
         $libros = $this->db->obtener_data();
