@@ -140,13 +140,6 @@
 		}
 	}
 
-	//on mobile - open/close primary navigation clicking/tapping the menu icon 
-	document.getElementsByClassName('js-cd-header__nav')[0].addEventListener('click', function(event){
-		if(event.target.tagName.toLowerCase() == 'nav') {
-			classie.toggleClass(this.getElementsByTagName('ul')[0], 'cd-is-visible');
-		}
-	});
-
 	function removeClassPrefix(el, prefix) {
 		//remove all classes starting with 'prefix'
         var classes = el.className.split(" ").filter(function(c) {

@@ -6,7 +6,7 @@
  /**
   * Compruebo que el navegador soporte la API de Notificaciones
   */
-if ( !window.Notification ) {
+ if ( !window.Notification ) {
     window.Notification = (()=>window.Notification || window.webkitNotication || window.mozNotification || window.oNotification || window.msNotification)()
 }
 /**
