@@ -22,7 +22,7 @@ var appchat = new Vue({
                 this.msg = '';
             },
             /**
-             * @function limpiarChat borra el texto que eecribio el usuario en la caja de texto
+             * @function limpiarChat borra el texto que escribio el usuario en la caja de texto
              */
             limpiarChat(){
                 this.msg = '';
@@ -34,7 +34,7 @@ var appchat = new Vue({
     });
     socket.on('recibirMensaje',msg=>{
         console.log(msg);
-        $.notification("Enviando noficacion",msg, 'https://www.tuexpertoapps.com/wp-content/uploads/2018/06/mensajes-android-950x675.jpg.webp');
+        $.notification("Biblioteca Digital",msg, 'https://image.winudf.com/v2/image1/Y29tLmZhY2Vib29rLm9yY2FfaWNvbl8xNTYxNDE0ODQ5XzAwMw/icon.png?w=100&fakeurl=1');
         appchat.msgs.push(msg);
     });
     socket.on('chatHistory',msgs=>{
