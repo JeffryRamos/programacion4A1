@@ -7,7 +7,7 @@
   background-size: cover;
 }
 .modal-content{
-  background-color: midnightblue;
+  
   opacity: .85;
   padding: 0 20px;
   
@@ -93,4 +93,9 @@ body {
 #wrapper.toggled #sidebar-wrapper {
   margin-left: -15rem;
 }
+}
+.msg-error{
+  color: red;
+  display: block;
+  margin-top: 10px;
 }

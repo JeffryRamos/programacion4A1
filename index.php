@@ -34,7 +34,7 @@
     <header class="header header_style_01">
         <nav class="navbar header-nav navbar-expand-lg">
             <div class="container">
-				<a class="navbar-brand" href="index.html"><img src="imagenes/logolink.png" alt="image"></a>
+				<a class="navbar-brand" href="index.php"><img src="imagenes/logolink.png" alt="image"></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarApp" aria-controls="navbarApp" aria-expanded="false" aria-label="Toggle navigation">
 					<span></span>
 					<span></span>
@@ -42,9 +42,9 @@
 				</button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarApp">
                     <ul class="navbar-nav">
-                        <li><a class="nav-link active" href="index.html">Inicio</a></li>
-                        <li><a class="nav-link" href="login.html">Iniciar Sesión</a></li>
-                        <li><a class="nav-link" href="registro.html">Registrarse</a></li>
+                        <li><a class="nav-link active" href="index.php">Inicio</a></li>
+                        <li><a class="nav-link" href="login.php">Iniciar Sesión</a></li>
+                        <li><a class="nav-link" href="registro.php">Registrarse</a></li>
                     </ul>
                 </div>
             </div>
