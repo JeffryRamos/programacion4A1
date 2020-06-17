@@ -49,7 +49,7 @@ socket.on('recibirMensaje', msg => {
         msg.para === appchat.msg.de1 && msg.de1 === appchat.msg.para) {
         appchat.msgs.push(msg);
         if (msg.de1 === appchat.msg.para) {
-            $.notification("Biblioteca chat", msg.msg, 'img/logo.png');
+            $.notification("Biblioteca Digital chat", msg.msg, 'img/logo.png');
         }
     }
     appchat.finalChat();
