@@ -1,3 +1,4 @@
+
 var appchat = new Vue({
     el: '#frm-chat',
     data:{
@@ -16,9 +17,12 @@ var appchat = new Vue({
                 this.msg.msg = '';
             }
         },
+        limpiarChat() {
+            this.msg = '';
+        },
         usuario() {
             fetch(`private/Modulos/consultas/procesos.php?proceso=idLogin&consulta=""`).then(resp => resp.json()).then(resp => {
-                this.msg.de1 = resp[0].idLogin;
+                this.msg.del = resp[0].idLogin;
                 socket.emit('chatHistory');
             });
             this.finalChat();
@@ -45,10 +49,10 @@ var appchat = new Vue({
     }
 });
 socket.on('recibirMensaje', msg => {
-    if (msg.de1 === appchat.msg.de1 && msg.para === appchat.msg.para ||
-        msg.para === appchat.msg.de1 && msg.de1 === appchat.msg.para) {
+    if (msg.del === appchat.msg.del && msg.para === appchat.msg.para ||
+        msg.para === appchat.msg.del && msg.de1 === appchat.msg.para) {
         appchat.msgs.push(msg);
-        if (msg.de1 === appchat.msg.para) {
+        if (msg.del === appchat.msg.para) {
             $.notification("Biblioteca Digital chat", msg.msg, 'img/logo.png');
         }
     }
@@ -57,8 +61,8 @@ socket.on('recibirMensaje', msg => {
 socket.on('chatHistory', msgs => {
     appchat.msgs = [];
     msgs-forEach(item => {
-        if (item.de1 === appchat.msg.de1 && item.para === appchat.msg.para ||
-            item.para === appchat.msg.de1 && item.de1 === appchat.msg.para) {
+        if (item.del === appchat.msg.del && item.para === appchat.msg.para ||
+            item.para === appchat.msg.del && item.de1 === appchat.msg.para) {
             appchat.msgs.push(item);
         }
     });
