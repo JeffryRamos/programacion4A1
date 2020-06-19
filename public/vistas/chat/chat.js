@@ -17,9 +17,6 @@ var appchat = new Vue({
                 this.msg.msg = '';
             }
         },
-        limpiarChat() {
-            this.msg = '';
-        },
         usuario() {
             fetch(`private/Modulos/consultas/procesos.php?proceso=idLogin&consulta=""`).then(resp => resp.json()).then(resp => {
                 this.msg.del = resp[0].idLogin;
