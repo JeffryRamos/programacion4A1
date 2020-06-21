@@ -28,7 +28,9 @@
         if ($resultado !== false){
             $_SESSION['usuario'] = $usuario;
             header('location: principal.html');
-        }else{
+        }
+
+        else {
             $error .= '<i>Este usuario no existe</i>';
         }
     }
