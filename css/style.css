@@ -99,6 +99,14 @@ a{
     color: #898989;
 }
 
+.form .contra {
+    font-weight: 300;
+    font-size: 15px;
+    color: #898989;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
 .line-input{
     max-width: 350px;
