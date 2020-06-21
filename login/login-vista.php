@@ -42,7 +42,7 @@
             </div>
             <?php endif; ?>
 
-            <a href="contra.php"><li class="contra">Se te olvidó la contraseña?</li></a>
+            <a href="contra.html"><li class="contra">Se te olvidó la contraseña?</li></a>
             <button type="submit">Iniciar Sesión<label class="lnr lnr-chevron-right"></label></button>
         </form>
     </div>

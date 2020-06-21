@@ -1,5 +1,5 @@
 /**
- * @author Kathia Mejía <kathiadinora21@gmail.com>
+ * @author Luis Hernandez <luishernandez@ugb.edu.sv>
  * @file notificaciones.js -> sirve para el uso de la API de Notificaciones.
  */
 
