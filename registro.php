@@ -1,7 +1,8 @@
 <?php session_start();
-
-
-    
+ /* Recibe todos los datos que ingrese el usuario  
+     para poder reistrarse  
+ */
+   
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         
         $nombre = $_POST['nombre'];
@@ -29,6 +30,7 @@
             $statement->execute(array(':usuario' => $usuario));
             $resultado = $statement->fetch();
             
+            /* Da alerta de error cuando uno de los datos es erroneo */
                         
             if ($resultado != false){
                 $error .= '<i>Este usuario ya existe</i>';
@@ -40,7 +42,7 @@
             
             
         }
-        
+        /* Es codificado para almacenar los datos en la respectiva base de datos, continuo con un mensaje */
         if ($error == ''){
             $statement = $conexion->prepare('INSERT INTO registros (idRegistro, nombre, email, usuario, password) VALUES (null, :nombre, :email, :usuario, :password)');
             $statement->execute(array(
