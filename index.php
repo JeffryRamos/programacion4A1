@@ -24,17 +24,12 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
 
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 <body class="app_version" data-spy="scroll" data-target="#navbarApp" data-offset="98">
     <header class="header header_style_01">
         <nav class="navbar header-nav navbar-expand-lg">
             <div class="container">
-				<a class="navbar-brand" href="index.php"><img src="imagenes/logolink.png" alt="image"></a>
+				<a class="navbar-brand" href="index.php"><img src="imagenes/logolink.png" alt="image"></a><!-- Logo en pagina de index -->
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarApp" aria-controls="navbarApp" aria-expanded="false" aria-label="Toggle navigation">
 					<span></span>
 					<span></span>
@@ -42,9 +37,9 @@
 				</button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarApp">
                     <ul class="navbar-nav">
-                        <li><a class="nav-link active" href="index.php">Inicio</a></li>
-                        <li><a class="nav-link" href="login.php">Iniciar Sesión</a></li>
-                        <li><a class="nav-link" href="registro.php">Registrarse</a></li>
+                        <li><a class="nav-link active" href="index.php">Inicio</a></li><!-- Link en el boton inicio que direge a pagina de index -->
+                        <li><a class="nav-link" href="login.php">Iniciar Sesión</a></li><!-- Link en el boton iniciar sesion que direge a pagina de login.php -->
+                        <li><a class="nav-link" href="registro.php">Registrarse</a></li><!-- Link en el boton inicio que direge a pagina de registro.php -->
                     </ul>
                 </div>
             </div>
@@ -54,8 +49,8 @@
     <div id="portadalibros" class="section wb">
         <div class="container">
             <div class="section-title text-center">
-                <h3>Biblioteca Digital</h3>
-                <p class="lead">Servicio de prestamos de libros, de la biblioteca municipal</p>
+                <h3>Biblioteca Digital</h3><!-- Nombre del sistema en la pagina principal -->
+                <p class="lead">Servicio de prestamos de libros, de la biblioteca municipal</p><!-- Descripcion del sistema en la pagina principal -->
             </div><!-- end title -->
 
             <div class="owl-portadalibros swiper-container">
@@ -66,7 +61,7 @@
 							<div class="post-media entry wow fadeIn">
 								<a href="libros/game.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
 								<img src="libros/game.jpg" alt="" class="img-fluid img-rounded">
-								<div class="magnifier"></div>
+								<div class="magnifier"></div><!-- Portadas de los libros en la pagina principal -->
 							</div>
 						</div><!-- end service -->
 					</div>
@@ -75,7 +70,7 @@
 							<div class="post-media entry wow fadeIn">
 								<a href="libros/elprin.png" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
 								<img src="libros/elprin.png" alt="" class="img-fluid img-rounded">
-								<div class="magnifier"></div>
+								<div class="magnifier"></div><!-- Portadas de los libros en la pagina principal -->
 							</div>
 						</div><!-- end service -->
 					</div>
@@ -84,7 +79,7 @@
 							<div class="post-media entry wow fadeIn">
 								<a href="libros/exor.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
 								<img src="libros/exor.jpg" alt="" class="img-fluid img-rounded">
-								<div class="magnifier"></div>
+								<div class="magnifier"></div><!-- Portadas de los libros en la pagina principal -->
 							</div>
 						</div><!-- end service -->
 					</div>
@@ -93,7 +88,7 @@
 							<div class="post-media entry wow fadeIn">
 								<a href="libros/after.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
 								<img src="libros/after.jpg" alt="" class="img-fluid img-rounded">
-								<div class="magnifier"></div>
+								<div class="magnifier"></div><!-- Portadas de los libros en la pagina principal -->
 							</div>
 						</div><!-- end service -->
 					</div>
@@ -102,7 +97,7 @@
 							<div class="post-media entry wow fadeIn">
 								<a href="libros/crepusculo.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
 								<img src="libros/crepusculo.jpg" alt="" class="img-fluid img-rounded">
-								<div class="magnifier"></div>
+								<div class="magnifier"></div><!-- Portadas de los libros en la pagina principal -->
 							</div>
 						</div><!-- end service -->
 					</div>
@@ -111,7 +106,7 @@
 							<div class="post-media entry wow fadeIn">
 								<a href="libros/aveces.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
 								<img src="libros/aveces.jpg" alt="" class="img-fluid img-rounded">
-								<div class="magnifier"></div>
+								<div class="magnifier"></div><!-- Portadas de los libros en la pagina principal -->
 							</div>
 						</div><!-- end service -->
 					</div>
@@ -120,7 +115,7 @@
 							<div class="post-media entry wow fadeIn">
 								<a href="libros/apartamento.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
 								<img src="libros/apartamento.jpg" alt="" class="img-fluid img-rounded">
-								<div class="magnifier"></div>
+								<div class="magnifier"></div><!-- Portadas de los libros en la pagina principal -->
 							</div>
 						</div><!-- end service -->
 					</div>
@@ -140,13 +135,11 @@
         <div class="container">
             <div class="footer-distributed">
                 <div class="footer-left">                    
-                    <p class="footer-company-name">Todos los derechos reservados. © 2020 Biblioteca Digital
+                    <p class="footer-company-name">Todos los derechos reservados. © 2020 Biblioteca Digital<!-- Coppy Right -->
                 </div>
             </div>
         </div><!-- end container -->
     </div><!-- end copyrights -->
-
-    <a href="#inicio" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 
     <!-- ALL JS FILES -->
     <script src="js/all.js"></script>
@@ -154,6 +147,8 @@
 	<script src="js/main.js"></script>
     <script src="js/custom.js"></script>
 	<script src="js/swiper.min.js"></script>
+	
+	<!-- Menu Swiper de las portadas de los libros -->
 	<script>
 		var swiper = new Swiper('.swiper-container', {
 			loop: true,

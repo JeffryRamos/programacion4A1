@@ -8,7 +8,9 @@ if( isset($_GET['proceso']) && strlen($_GET['proceso'])>0 ){
 }
 $prestamo->$proceso( $_GET['prestamo'] );
 print_r(json_encode($prestamo->respuesta));
-
+/**
+ * @class prestamo
+ */
 class prestamo{
     private $datos = array(), $db;
     public $respuesta = ['msg'=>'correcto'];
@@ -16,22 +18,27 @@ class prestamo{
     public function __construct($db){
         $this->db=$db;
     }
+    /**
+     * @function recibirDatos recibe los datos del prestamo
+     * $prestamo representa los datos en si
+     */
     public function recibirDatos($prestamo){
         $this->datos = json_decode($prestamo, true);
         $this->validar_datos();
     }
     private function validar_datos(){
         if( empty($this->datos['usuario']['id']) ){
-            $this->respuesta['msg'] = 'Por favor ingrese el usuario del prestamo';
+            $this->respuesta['msg'] = 'Por favor ingrese el usuario del prestamo'; /**Validacion de datos que conlleva el prestamo**/
         }
         if( empty($this->datos['titulo']['id']) ){
-            $this->respuesta['msg'] = 'Por favor ingrese el libro';
+            $this->respuesta['msg'] = 'Por favor ingrese el libro'; /**Validacion de datos que conlleva el prestamo**/
         }
         if( empty($this->datos['fechaPrestamo']) ){
-            $this->respuesta['msg'] = 'Por favor ingrese la fecha';
+            $this->respuesta['msg'] = 'Por favor ingrese la fecha';/**Validacion de datos que conlleva el prestamo**/
         }
         $this->almacenar_prestamo();
     }
+      /**Validacion de datos con la BD**/
     private function almacenar_prestamo(){
         if( $this->respuesta['msg']==='correcto' ){
             if( $this->datos['accion']==='nuevo' ){
@@ -43,6 +50,7 @@ class prestamo{
                         "'. $this->datos['fechaDevolucion'] .'"
                     )
                 ');
+                /**Modificacion y validacion de los datos que estan en la BD**/
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
@@ -57,6 +65,7 @@ class prestamo{
             }
         }
     }
+    /**Busqueda de prestamos y llamado al usuario que prestara los libros**/
     public function buscarPrestamo($valor = ''){
         if( substr_count($valor, '-')===2 ){
             $valor = implode('-', array_reverse(explode('-',$valor)));
@@ -97,6 +106,7 @@ class prestamo{
         }
         return $this->respuesta = $datos;
     }
+    /**Llamado de usuarios y libros para mostrar en el registro de prestamos**/
     public function traer_registro_libro(){
         $this->db->consultas('
             select registros.usuario AS label, registros.idRegistro AS id
@@ -110,6 +120,7 @@ class prestamo{
         $libros = $this->db->obtener_data();
         return $this->respuesta = ['registros'=>$registros, 'libros'=>$libros ];//array de php en v7+
     }
+    /**Eliminacion de prestamos**/
     public function eliminarPrestamo($idPrestamo = 0){
         $this->db->consultas('
             DELETE prestamos
